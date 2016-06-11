@@ -1,0 +1,19 @@
+%SECCIÓN 3. PREGUNTAS INVESTIGACION
+\section{Exploratory Analysis}
+In this section was made an analysis in some scenarios to check the information related with the "frequencies" and the "central tendency measures"\\
+
+ The following information contains the resume of the exploratory analysis of the variables through the measure period
+ <<date,  results='asis',echo=FALSE, warning=FALSE, message=FALSE>>=
+ summaryYears <- data.frame("Variable"="Year", "mean"=mean(onlineRetails$Year), "min"=min(onlineRetails$Year), "max"=max(onlineRetails$Year), "var"=var(onlineRetails$Year), "sd"=sd(onlineRetails$Year))
+ summaryMonth <- data.frame("Variable"="Month", "mean"=mean(onlineRetails$Month), "min"=min(onlineRetails$Month), "max"=max(onlineRetails$Month), "var"=var(onlineRetails$Month), "sd"=sd(onlineRetails$Month))
+ summaryDay <- data.frame("Variable"="Day", "mean"=mean(onlineRetails$Day), "min"=min(onlineRetails$Day), "max"=max(onlineRetails$Day), "var"=var(onlineRetails$Day), "sd"=sd(onlineRetails$Day))
+ summaryPositiveQuantity <- data.frame("Variable"="Sold", "mean"=mean(onlineRetails$PositiveQuantity), "min"=min(onlineRetails$PositiveQuantity), "max"=max(onlineRetails$PositiveQuantity), "var"=var(onlineRetails$PositiveQuantity), "sd"=sd(onlineRetails$PositiveQuantity))
+ summaryNegativeQuantity <- data.frame("Variable"="Returned", "mean"=mean(onlineRetails$NegativeQuantity), "min"=min(onlineRetails$NegativeQuantity), "max"=max(onlineRetails$NegativeQuantity), "var"=var(onlineRetails$NegativeQuantity), "sd"=sd(onlineRetails$NegativeQuantity))
+ 
+ generalSummary <- rbind(summaryYears, summaryMonth, summaryDay, summaryPositiveQuantity, summaryNegativeQuantity)
+ 
+ xtable(generalSummary, "Summary of main variables")
+ 
+ @
+ 
+ As you can see in the table, it's a general overview around the dataset because meeting the exploratory information of the data you can assume you know the data set.

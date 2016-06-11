@@ -1,0 +1,96 @@
+%Tipo de Documento [Conferencia]
+
+\documentclass[conference]{IEEEtran}
+
+%BIBLIOTECAS
+
+% Este paquete se utiliza para generar texto o graficas de relleno.
+%\usepackage{blindtext, graphicx}
+%Biblioteca para graficas
+\usepackage{graphicx}
+%Biblioteca para lectura de caracteres ortográficos (tildes..etc. ) 
+\usepackage[utf8]{inputenc}
+%Biblioteca para enumeración de imagenes
+\usepackage{float}
+%Biblioteca para graficos vectrizados.svg 
+\usepackage{svg}
+\usepackage{enumerate}
+%Biblioteca para enumerar figuras tablas.. etc en español 
+\usepackage[spanish, es-tabla]{babel}
+\usepackage[spanish]{babel}
+%\usepackage[spanish,USenglish]{babel}
+%%\usepackage{hyperref} %%%%%% para insertar hypervinculos
+\usepackage[hidelinks]{hyperref}  %%para insertar hyperviculos sin cajas
+
+
+%INICIO DEL DOCUMENTO
+\begin{document}
+	
+	
+	% TITULO DEL PAPER
+\title{Análisis dinámico  a la Situación Actual de Desminado Humanitario en Colombia haciendo uso de la programación literaria y el paquete Knitr}
+
+% NOMBRE DE LOS AUTORES
+\author{
+	\IEEEauthorblockN{Wilmar Diaz Rodriguez}
+	\IEEEauthorblockA{Ingeniero de Electrónico\\ 
+		Universidad Distrital Francisco José de Caldas\\
+		Bogotá D.C., Colombia\\
+		Email: wilmardiazr@gmail.com}
+	%\and
+}
+%TITULO
+\maketitle
+
+%abstract del documento
+\input{itemsDoc/abstract.tex}
+
+%Iniciar Palabras Clave Formato IEEE
+\begin{IEEEkeywords}
+	Minas, Data Mining, Desminado, Dataset, Modelo predictivo.
+\end{IEEEkeywords}
+
+%Introduccion 
+\input{itemsDoc/introduccion.tex}
+
+%Metodologia
+\input{itemsDoc/metodologia.tex}
+
+%Preguntas de investigacion
+\input{itemsDoc/QuestionsResearch.tex}
+	
+	% Analisis exploratorio
+	<<child='codigoR/exploratorio.Rnw', echo=FALSE, results='hide'>>=  
+	@
+	
+	% Solución de preguntas
+%	<<child='codigoR/solucionQuestions.Rnw', echo=FALSE, results='hide'>>=  
+%	@
+	
+	%BIBLIOGRAFÍA
+	%ENTORNO {thebibliography}
+	%Permite al autor listar las referencias utilizadas y citarlas en algun punto del texto.
+	
+	\newpage
+	 \begin{thebibliography}{1}
+	 	
+	 	\bibitem{biblio1}
+		Cornel University library The jsonlite Package: A Practical and Consistent Mapping Between JSON Data and R Objects
+	 	\href{http://arxiv.org/abs/1403.2805}{\textcolor{blue}{\underline{URL1}}}
+
+	 	\bibitem{biblio2}
+	 	Situación de Desminado Humanitario en Colombia
+	 	\href{http://www.datos.gov.co/frm/catalogo/frmCatalogo.aspx?dsId=75158}{\textcolor{blue}{\underline{URL2}}}
+	 		 	
+	 	\bibitem{biblio3}
+		New package: jsonlite. A smart(er) JSON encoder/decoder.
+		\href{https://www.opencpu.org/posts/jsonlite-a-smarter-json-encoder/}{\textcolor{blue}{\underline{URL3}}}
+		
+		\bibitem{biblio4}
+		LINEAMIENTOS PARA LA IMPLEMENTACIÓN DE DATOS ABIERTOS EN COLOMBIA
+		\href{http://ogdidata.blob.core.windows.net/documentos/articles-9407_GuiaDesarrolladores.pdf}{\textcolor{blue}{\underline{URL4}}}
+		
+		
+	 \end{thebibliography}
+	
+\end{document}

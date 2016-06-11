@@ -1,0 +1,403 @@
+	%Tipo de Documento [Conferencia]
+\documentclass[conference]{IEEEtran}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+% Configuracion github http://www.cristalab.com/tutoriales/introduccion-a-github-en-linux-ubuntu-c106086l/ 
+%BIBLIOTECAS% Este paquete se utiliza para generar texto o graficas de relleno.
+%\usepackage{blindtext, graphicx}
+%Biblioteca para graficas
+\usepackage{graphicx}
+%Biblioteca para lectura de caracteres ortográficos (tildes..etc. ) 
+\usepackage[utf8]{inputenc} %tabla de caracteres para SO linux
+%\usepackage[latin1]{inputenc} %tabla de caracteres para SO windows 
+\usepackage[T1]{fontenc}
+%Biblioteca para enumeración de imagenes
+\usepackage{float}
+%Biblioteca para graficos vectorizados.svg 
+\usepackage{svg}
+\usepackage{enumerate}
+%Biblioteca para enumerar figuras tablas.. etc en español 
+\usepackage[spanish, es-tabla]{babel}
+%Idioma español
+\usepackage[spanish]{babel}
+%\usepackage[spanish,USenglish]{babel}
+
+%INICIO DEL DOCUMENTO
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}	
+	
+	% TITULO DEL PAPER
+	\title{Incidencia del estrato socio económico en el rendimiento académico de los estudiantes de la Universidad de los Llanos}
+	
+	% NOMBRE DE LOS AUTORES
+	\author{
+		\IEEEauthorblockN{Alejandro Pinzón Roberto}
+		\IEEEauthorblockA{Ingeniero de Sistemas\\ 
+			Universidad de los LLanos\\
+			Bogotá D.C., Colombia\\
+			Email: alejorobert@gmail.com}
+	}
+	%TITULO
+	\maketitle
+	
+	%abstract del documento
+	\input{itemsDoc/abstract.tex}
+	
+	%Iniciar Palabras Clave Formato IEEE
+	\begin{IEEEkeywords}
+		Estrato socieconomico, Rendimiento académico, Estudiantes ingeniería, Facultad Ingeniería 
+	\end{IEEEkeywords}
+	
+	%Introduccion 
+	\input{itemsDoc/introduccion.tex}
+	
+	%Metodologia
+	%\input{itemsDoc/metodologia.tex}
+
+%SECCIÓN 3. METODOLOGIA
+\section{METODOLOGÍA}
+
+
+
+ Para abordar el análisis de este problema se desarrollaran las siguientes tareas [1].
+ 
+  \subsection{Reconocimiento de la información}
+ 
+ El dataset utilizado en este análisis fue obtenido mediante una consulta sobre la base de datos de la Universidad de los Llanos y esta conformada por la información de los estudiantes activos de todas las facultades que componen la universidad.
+  
+  \begin{itemize}
+   \item \textbf{Descripción la población}: La población objeto de este análisis esta compuesta por los estudiantes activos (matriculados) de la Universidad de los Llanos, que no poseen problemas académicos o administrativos; se excluyeron los estudiantes que pertenecen a primer semestre de todas las carreras de pregrado, debido a que no poseen promedio ponderado de carrera aún. 
+   \bigskip
+ 
+   La población esta compuesta por los datos de 5000 estudiantes que tiene la Universidad de los Llanos, los cuales fueron obtenidos mediante una consulta a la base de datos del sistema de registro y control académico de la Universidad de los Llanos, de donde se extrajeron en una hoja de calculo los siguientes campos:
+   
+   \item \textbf{Variables del DataSet:}\\
+	    
+	   \begin{itemize}
+		   \item \textbf{ciudad}   : Ciudad de origen del estudiante
+		   \item \textbf{dept} 	   : Departamento de origen del estudiante
+		   \item \textbf{estrato}  : Estrato socieconomico del estudiante
+		   \item \textbf{promedio} : Promedio ponderado de carrera del estudiante
+		   \item \textbf{carrera}  : Programa académico que cursa el estudiante
+		   \item \textbf{codigo}   : Código del estudiante
+		   \item \textbf{nombre}   : Nombres y apellidos del estudiante
+		   \item \textbf{genero}   : Genero del estudiante
+		   \item \textbf{ingresos} : Ingresos del estudiante
+		   \item \textbf{egresos}  : Egresos del estudiante
+		   \item \textbf{identificacion}: Numero de identificación del estudiante
+		\end{itemize}
+	   
+	   \item \textbf{Identificación del problema}: El estrato socio económico esta relacionado con la cantidad de dinero al que tiene acceso una persona para suplir sus necesidades materiales, pero existe algún tipo de relación entre el estrato socio económico y el desarrollo intelectual, particularmente aquel es medido a través del promedió ponderado de carrera en la Universidad de los Llanos\\ 
+	    
+	   \item \textbf{Objetivos}: Determinar si la situación socio económica (estrato socio económico) puede generar consecuencias directas sobre el rendimiento académico de los estudiantes de la Universidad de los Llanos.
+   
+  \end{itemize}
+  \subsection{Preguntas de investigación}
+  Las preguntas de investigación que se abordan en este análisis son las siguientes:
+	  \begin{itemize}
+	   \item ¿Existe algún tipo de relación entre el estrato socio económico y el desarrollo intelectual?
+	   \item ¿Los estudiantes falsean el estrato social real, para obtener beneficios económicos en el valor de la matricula?
+	   \item ¿La elección de estudiar en la Universidad de los Llanos, se realiza para reducir costos?
+	   \item ¿La elección de estudiar en la Universidad de los Llanos, se realiza para obtener reconocimiento académico de la misma?
+	  \end{itemize}
+  \subsection{Análisis exploratorio}
+    
+  	Las variables que son objeto del análisis en esta investigación son el estrato socieconomico y el promedio ponderado de carrera, a continuación se realiza el análisis de cada una de ellas:
+    	  
+  \begin{itemize}
+  	%alzate
+	\item \textbf {Variable Estrato Socioeconomico}: Esta variable es un atributo de carácter ordinal, a la cual se le puede aplicar la frecuencia y la moda como medida de tendencia central y utilizar el diagrama de sectores o torta como forma de representación gráfica con el fin de establecer la distribución de cada estrato respecto al total de la población.  \\
+	
+	Los datos utilizados para analizar el comportamiento de la variable estrato socieconomico se resumen en la tabla de la Figura 1.
+	
+	\bigskip
+	\begin{figure} [ht]
+		\centering
+		\includegraphics[width=0.9\linewidth]{figure/cuadro_socioeconomico}
+		\caption{Variable Estrato Socioeconomico}
+		\label{fig:cuadro_socioeconomico}
+	\end{figure}
+
+	En la Figura 2 se representa gráficamente la población por estrato utilizando diagramas de sectores o torta:  
+	\bigskip
+
+	\begin{figure} [ht]
+		\centering
+		\includegraphics[width=0.9\linewidth]{figure/diagrama_sectores}
+		\caption{Diagrama de sectores}
+		\label{fig:diagrama_sectores}
+	\end{figure}
+
+	Como se puede observar en el diagrama de sectores la mayor cantidad de observaciones se encuentran agrupadas en el estrato 2 con un porcentaje de ocurrencia del 46\%.\\
+	   
+	Como se puede observar en el diagrama de barras de la Figura 3, la mayor cantidad de observaciones en la población ocurren en el estrato 2 con una frecuencia de 275 que corresponde al estrato hacia el que tienden a agruparsen las observaciones.
+   
+	\begin{figure}[ht]
+		\centering
+
+\includegraphics[width=\maxwidth]{figure/estrato-1} 
+
+		\caption{Diagrama para estrato socioeconómico}
+		\label{fig:diagrama_barras}
+	\end{figure}
+
+  	\item \textbf {Variable Promedio Ponderado de Carrera:}
+	El promedio ponderado de carrera es una variable de carácter cuantitativo de tipo continuo, a la que se le puede aplicar la media y la mediana como medidas de tendencia central, a continuación se presentan los resultados.
+	
+
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: vie, jun 03, 2016 - 00:03:15
+\begin{table}[!htbp] \centering 
+  \caption{Promedio academico ponderado} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\ 
+\hline \\[-1.8ex] 
+Estrato & 595 & 2.356 & 0.718 & 1 & 4 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+
+	
+	Se construyeron 5 intervalos de frecuencia de clase con el fin de facilitar el tratamiento y representación de los 613 promedios de carrera de los estudiantes de pregrado de la Universidad de los Llanos, los cuales se muestran a continuación:
+	%\bigskip
+	
+	\begin{itemize}
+		\item Intervalo 1: promedios de carrera entre 0 y 1  
+		\item Intervalo 2: promedios de carrera entre 1,1 y 2
+		\item Intervalo 3: promedios de carrera entre 2,1 y 3
+		\item Intervalo 4: promedios de carrera entre 3,1 y 4 
+		\item Intervalo 5: promedios de carrera entre 4,1 y 5
+	\end{itemize}
+%	\bigskip
+		
+	La tabla de frecuencias de la Figura 4 muestra el comportamiento de la variable promedio ponderado respecto a cada uno de los intervalos de clase.	
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.7\linewidth]{figure/cuadro_promedio}
+		\caption{Variable Promedio Ponderado de Carrera}
+		\label{fig:cuadro_promedio}
+	\end{figure}
+	La Figura 5 representa gráficamente el comportamiento de la variable promedio ponderado de carrera mediante histograma de frecuencias de clases.
+
+	\begin{figure}[ht]
+		\centering
+
+\includegraphics[width=\maxwidth]{figure/barrapromedio-1} 
+
+		\caption{Histograma para Promedio Académico}
+		\label{fig:barras_promedio_frecuencias_clase}
+	\end{figure}
+
+%	\begin{figure}[ht]
+%		\centering
+%		\includegraphics[width=0.9\linewidth]{figure/diagrama_barras_promedio}
+%		\caption{Histograma Frecuencias Relativas}
+%		\label{fig:diagrama_barras_promedio}
+%	\end{figure}
+
+	La Figura 6 muestra gráficamente la estimación de densidad para la variable promedio ponderado de carrera, lo que sugiere que los datos siguen una distribución normal y que se puede aplicar un estimador con base en la media o la varianza. 
+	\begin{figure}[ht]
+		\centering
+
+\includegraphics[width=\maxwidth]{figure/densidad-1} 
+
+		\caption{Estimación de densidad para Promedio Académico}
+		\label{fig:estimacion_frecuencia:promedio}
+	\end{figure}
+
+	\begin{figure}[ht]
+		\centering
+
+\includegraphics[width=\maxwidth]{figure/diagrama_puntos-1} 
+
+		\caption{Diagrama de puntos para Promedio Académico}
+		\label{fig:diagrama_puntos}
+	\end{figure}
+
+	Al aplicar la prueba de Shapiro-Wilk para validar el comportamiento de normal de los datos, se obtiene una confianza de W=0,9857 y p-value 0,0001457, como el valor de confianza deseado es 0,05 y el valor obtenido es menor se afirma que los datos no se comportan de forma normal.
+	
+	\begin{center}
+		\bigskip
+
+	Shapiro-Wilk normality test
+
+data:  promedio
+W = 0.9857, p-value = 1.457e-05
+
+
+	\end{center}
+			
+	\bigskip
+	La Figura 7 muestra el diagrama de caja (box plot) que se construyo para visualizar gráficamente los datos atípicos que impiden que los datos alcancen el comportamiento normal.
+		
+	\begin{figure}[ht]
+		\centering
+
+\includegraphics[width=\maxwidth]{figure/boxplot-1} 
+
+		\caption{Diagrama de caja de la variable promedio}
+		\label{fig:diagrama_boxplot_promedio}
+	\end{figure}
+	
+	\bigskip
+
+	Se aplica la técnica de truncamiento para forzar que los datos se comporten de forma normal, para ello se ordenan los datos de mayor a menor y se eliminan 150 datos, 75 en cada extremo. \\
+	
+	Se aplica nuevamente la prueba de normalidad de Shapiro-Wilk, obteniendo esta vez un comportamiento de normalidad en los datos resultados:\\
+	
+	\begin{center}
+
+	Shapiro-Wilk normality test
+
+data:  promedio
+W = 0.9857, p-value = 3.387e-05
+
+
+	\end{center}
+	\bigskip	
+	Se realiza nuevamente el diagrama de caja (box plot) y se confirma que ya no existen datos outline o atípicos.
+	
+	\begin{figure}[ht]
+		\centering
+
+\includegraphics[width=\maxwidth]{figure/boxplot_trucado-1} 
+
+		\caption{Diagrama de caja de la variable promedio truncada}
+		\label{fig:diagrama_boxplot_promedio_truncada}
+	\end{figure}
+		
+	\begin{figure}[ht]
+		\centering
+
+\includegraphics[width=\maxwidth]{figure/dispersion-1} 
+
+		\caption{Diagrama de dispersión}
+		\label{fig:diagrama_dispersion}
+	\end{figure}
+	
+	\item \textbf {Diseño del espacio muestral:}
+	El muestreo aplicado para abordar el análisis del dataset es Muestreo Aleatorio Simple (MAS) y el método utilizado para realizar la selección de los datos que conforman la muestra es coordinado negativo, a continuación se relacionan los cálculos realizados para obtener el tamaño de la muestra:
+	\bigskip
+	\begin{itemize}
+		\item Asignar un numero aleatorio a cada dato de la muestra
+		\item Ordenar de menor a mayor, de acuerdo al dato aleatorio cada elemento de la muestra
+		\item Seleccionar desde primer dato hasta el tamaño de la muestra
+	\end{itemize}
+	\bigskip
+	Los datos introducidos en los parámetros que proporciona la plantilla (documento adjunto) para calcular el tamaño de la muestra utilizando Muestreo Aleatorio Simple MAS, son los que se muestran a continuación:\\
+	
+	\begin{itemize}
+		\item Tamaño de la población 	N = 5000	
+		\item Error que se comete		E = 0,03	\\se recomienda que este entre 0,02 y 0,03
+		\item Proporción del dominio	P = 0,30	\\P tomar valores entre 0 y 1
+		\item Nivel de confianza		C = 0,91	\\(1 – alfa) donde alfa toma valores entre (0 y 1)
+	\end{itemize}
+	\bigskip
+  	  	El tamaño de la muestra después de aplicar la técnica del coordinador negativo (M) es:
+  	\bigskip  	
+  	\begin{itemize}
+  		\item Variabilidad			V = 0,2100420084
+	  	\item Valor del percentil 	Z(alfa) = -1,6953977103
+		\item Tamaño de la muestra 	M = 591  	
+  	\end{itemize}
+  	\bigskip  	
+  	Una vez obtenido el tamaño de la muestra, se aplico la técnica de coordinador negativo a los datos de los estudiantes; el procedimiento realizado es el que se describe a continuación:
+  	\bigskip
+  	\begin{itemize}
+  		\item Asigna un numero aleatorio a cada dato de la muestra
+		\item Se ordena de menor a mayor con respecto a la asignación aleatoria 
+		\item Se selecciona del primero hasta el tamaño de la muestra  
+  	 \end{itemize}
+  	\bigskip  		
+  	Para el caso de los estudiantes de la Universidad de los Llanos se poseen los datos completos de toda la población objeto de análisis, pero con fin de corroborar la valides de los datos proporcionados mediante una encuesta, se calcula el tamaño de la muestra y se realiza la estimación bajo criterios de normalidad se selecciono una muestra de tamaño 613.
+  	  	
+   
+  % \item Medidas de tendencia central[4] 
+		 %15\
+		 %\item Varianza [4] : La Varianza de las observaciones %$x_{1},x_{2},...,x_{n}$ es en esencia, el promedio del cuadrado %de las distancias entre cada observaci\'on y la media del %conjunto de observaciones. Se denota por:
+		 %$$s^{2}=\sum_{i=1}^{n} \frac{ \left( %x_{i}-\overline{x}\right)^{2}}{\left(n-1 \right) } $$ 
+		 
+		 %\item Desviación estándar [4]: La desviaci\'on est\'andar es la %raiz cuadrada de la varianza y se denota por:
+		 %$$s=\sqrt{\sum_{i=1}^{n} \frac{ \left( %x_{i}-\overline{x}\right)^{2}}{\left(n-1 \right) } }$$ 
+		 		 
+		 %Se puede aplicar una medida de tendencia central como la media y %un medida de dispersión  como la varianza. A continuación se %muestran los valores calculados para la variable promedio de %carrera ponderado.
+%		 \begin{figure}[ht]
+%			\centering
+%			\includegraphics[width=0.9\linewidth]{figure/medidas_rpbabilidad}
+%			\caption{}
+%			\label{fig:medidas_rpbabilidad}
+%		\end{figure}
+ 
+\end{itemize} 
+	
+	%Introduccion 
+	\input{itemsDoc/conclusiones.tex}
+		
+	\newpage
+	\begin{thebibliography}{1}
+		
+		\bibitem{biblio1}
+		Alexander Borbón A., Walter Mora F. LATEX 2014, Instituto Tecnológico de Costa Rica.  
+		\bibitem{biblio2}
+		Sabina, Carlos: El Proceso de Investigación, editorial Panamo, Caracas 1992.
+		\bibitem{biblio3}
+		George C. Calvos. Probabilidad y estadística aplicaciones y métodos, Virginia 1998 
+		\bibitem{biblio4}
+		G. C. Canavos, Probabilidad y estadística: Aplicaciones y métodos, Virginia Commonwealth University, Published McGRAW HILL, 1988.
+		\bibitem{biblio5}
+		revista Orinoquia de la Universidad de los Llanos en su Volumen 11 - Nº 1 - Año 2007 fue publicado un estudio sobre la deserción en entre los años de 1998 y 2004
+		
+	\end{thebibliography}
+	
+\end{document}

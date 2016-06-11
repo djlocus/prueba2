@@ -1,0 +1,9 @@
+base
+knitr
+stargazer
+ggplot2
+lubridate
+xtable
+plyr
+psych
+cluster

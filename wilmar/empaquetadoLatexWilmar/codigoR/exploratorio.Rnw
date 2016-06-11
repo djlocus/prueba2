@@ -1,0 +1,143 @@
+\section{Solución a preguntas}
+El análisis dinámico de datos en la investigación reproducible debe permitir, reproducir el experimento propuesto para nuestro caso obtener el resultado de las preguntas de investigación de manera dinámica por tal razón de cambiar un dato en el dataset se va a ver reflejado en las respuestas del documento esto generalmente ocurrira mes a mes.
+\\
+\\
+En este momento hay que tener varias consideraciones, se requiere hacer referencia a los datos anteponiendo la letra d ya que así esta construido el json que entrega la pagina de datos abiertos colombianos como ejemplo "json_data1\$d\$areadespejada[1]" esto mostraria el valor del area despejada para la primera fila del conjunto de datos notese que aparte de la variable donde se cargaron los datos se requiere hacer referencia a \$d,algunos de los datos que se van a tratar del datset son numéricos estos se deberán convertir a tal formato para poderlos tratar ya que cuando se lee dicho dataset se leen como texto para que R pueda trabajar con dichos datos se requiere la siguiente instrucción "json_data1\$d\$areadespejada <- as.numeric(json_data1\$d\$areadespejada)" lo que realiza esta instrucción es decirle que todos los datos de la columna area despejada los debe tratar como numéricos. 
+<<datos, results='hide', echo=FALSE, warning=FALSE,include=FALSE, message=FALSE>>=
+
+
+library(jsonlite)
+library(xtable)
+library(ggplot2)
+library(knitr)
+library(stargazer)
+library(MASS)
+
+json_file <- "../DataSet/Desminado_Humanitario_Colombia.txt"
+
+json_file <- "../DataSet/Desminado_Humanitario_Colombia.txt"
+json_data1<-fromJSON(json_file,flatten = TRUE)
+
+json_data1$d$totalartefactosdestruidos <- as.numeric(json_data1$d$totalartefactosdestruidos)
+json_data1$d$areadespejada <- as.numeric(json_data1$d$areadespejada)
+datos2016<-subset(json_data1$d,json_data1$d$ano==2016)
+datos2016min<-subset(datos2016,datos2016$areadespejada==min(datos2016$areadespejada))
+datos2016max<-subset(datos2016,datos2016$areadespejada==max(datos2016$areadespejada))
+datos2015<-subset(json_data1$d,json_data1$d$ano==2015)
+
+datos2015min<-subset(datos2015,datos2015$areadespejada==min(datos2015$areadespejada))
+datos2015max<-subset(datos2015,datos2015$areadespejada==max(datos2015$areadespejada))
+datos2014<-subset(json_data1$d,json_data1$d$ano==2014)
+
+datos2014min<-subset(datos2014,datos2014$areadespejada==min(datos2014$areadespejada))
+datos2014max<-subset(datos2014,datos2014$areadespejada==max(datos2014$areadespejada))
+
+datos2016<-subset(json_data1$d,json_data1$d$ano==2016)
+
+
+@
+
+
+Respuesta dinámica de las preguntas planteadas:
+%\vspace{1mm}
+\\
+\\
+En el siguiente apartado se muestran los datos estadisticos del área despejada así como el total de artefactos destruido.
+<<media11990hp, results='asis'>>=
+
+dfull <- data.frame(totalartefactos=json_data1$d$totalartefactosdestruidos,totalarea=json_data1$d$areadespejada)
+stargazer(dfull,type="latex",title="Total de Artefactos y Área Despejada")
+@
+
+
+\begin{itemize}
+	\item ¿Cuál es la Media de área despejada para los los años  2014, 2015, 2016?
+\\
+	Para poder manejar estos datos de forma dinámica lo que se debe realizar es una selección especifica de datos para este caso se realiza de la siguiente manera. vamos a verlo con el año 2016 datos2016<-subset(json_data1\$d,json_data1\$d\$ano==2016) de esta manera se seleccionan los datos que cumplan con el año y nuevamente se aplica los datos estadísticos con los siguientes resultados  
+
+	<<media2016, results='asis'>>=
+	
+	dfull <- data.frame(totalartefactos=datos2016$totalartefactosdestruidos,totalarea=datos2016$areadespejada)
+	stargazer(dfull,type="latex",title="Total de Artefactos y Área Despejada para el año 2016")
+	@
+	
+	<<media2015, results='asis'>>=
+	
+	dfull <- data.frame(totalartefactos=datos2015$totalartefactosdestruidos,totalarea=datos2015$areadespejada)
+	stargazer(dfull,type="latex",title="Total de Artefactos y Área Despejada para el año 2015")
+	@
+
+	<<media2014, results='asis'>>=
+	
+	dfull <- data.frame(totalartefactos=datos2014$totalartefactosdestruidos,totalarea=datos2014$areadespejada)
+	stargazer(dfull,type="latex",title="Total de Artefactos y Área Despejada para el año 2014")
+	@
+
+		Para solucionar las preguntas que siguen a continuación se usaron los subconjuntos de datos para poder obtener los resultados requeridos de forma dinámica asi como algunas funciones propias de R
+
+	
+	\item ¿Qué departamentos tiene la mayor y menor área despejada de Minas en el año 2016?
+	
+Los departamentos que tiene la mayor área despejada para 2016 son:
+
+
+<<areamaxima2016, results='asis'>>=
+	datos2016max$departamento
+
+@
+Los departamentos que tiene la menor área despejada para 2016 son:
+
+
+<<areaminima2016, results='asis'>>=
+datos2016min$departamento
+
+@
+
+
+
+	\item ¿Qué departamentos tiene la mayor y menor área despejada de Minas en el año 2015?
+
+	
+	Los departamentos que tiene la mayor área despejada para 2015 son:
+	
+	
+	<<areamaxima2015, results='asis'>>=
+	datos2015max$departamento
+	
+	@
+	Los departamentos que tiene la menor área despejada para 2015 son:
+	
+	
+	<<areaminima2015, results='asis'>>=
+	datos2015min$departamento
+	
+	@
+
+
+
+	\item ¿Qué departamentos tiene la mayor y menor área despejada de Minas en el año 2014?
+
+	Los departamentos que tiene la mayor área despejada para 2014 son:
+	
+	
+	<<areamaxima2014, results='asis'>>=
+	datos2014max$departamento
+	
+	@
+	Los departamentos que tiene la menor área despejada para 2014 son:
+	
+	
+	<<areaminima2014, results='asis'>>=
+	datos2014min$departamento
+	
+	@
+	
+
+
+
+	\item ¿Determinar si el acuerdo de paz ha permitido aumentar el área media despejada ?
+	en conclusión no se ha visto aumento de desminado en colombia
+	\item ¿Determinar si el acuerdo de paz ha permitido aumentar el área media despejada ?
+	No
+\end{itemize}
+

@@ -1,0 +1,176 @@
+<<importar-librerias, include=FALSE>>=
+knitr::opts_chunk$set(opts.label="kill_prefix")
+options(java.parameters="-Xmx2048m")
+if (!"stargazer" %in% installed.packages()) install.packages("stargazer")
+if (!"ggplot2" %in% installed.packages()) install.packages("ggplot2")
+if (!"lubridate" %in% installed.packages()) install.packages("lubridate")
+if (!"xtable" %in% installed.packages()) install.packages("xtable")
+if (!"plyr" %in% installed.packages()) install.packages("plyr")
+if (!"cluster" %in% installed.packages()) install.packages("cluster")
+library(stargazer)
+library(ggplot2)
+library(lubridate)
+library(xtable)
+library(plyr)
+library(psych)
+library(cluster)
+@
+
+<<setup-dataset, include=FALSE, cache=TRUE>>=
+onlineRetails <- read.csv(file = "./../data/online-retail.csv")
+
+onlineRetails$Date = as.Date(onlineRetails$InvoiceDate, format = "%m/%d/%Y")
+onlineRetails$Year = year(onlineRetails$Date)
+onlineRetails$Month = month(onlineRetails$Date)
+
+onlineRetails$Hour = hour(onlineRetails$Date)
+onlineRetails$Day = day(onlineRetails$Date)
+onlineRetails$YearMonth = paste(onlineRetails$Year,'-',onlineRetails$Month)
+
+onlineRetails <- onlineRetails[order(onlineRetails$Year, onlineRetails$Month, onlineRetails$Day ),]
+
+onlineRetails$PositiveQuantity <- 0
+onlineRetails$NegativeQuantity <- 0
+onlineRetails$PositiveQuantity <- ifelse(onlineRetails$Quantity>0,onlineRetails$Quantity,0)
+onlineRetails$NegativeQuantity <- ifelse(onlineRetails$Quantity<0,onlineRetails$Quantity*-1,0)
+
+onlineRetails$PositiveValue <- 0
+onlineRetails$NegativeValue <- 0
+onlineRetails$PositiveValue <- onlineRetails$PositiveQuantity*onlineRetails$UnitPrice
+onlineRetails$NegativeValue <- onlineRetails$NegativeQuantity*onlineRetails$UnitPrice
+@
+  
+<<setup-Month, include=FALSE, cache=TRUE>>=
+data.Month <- unique(onlineRetails[c("YearMonth")]);
+data.Month$PositiveQuantity <- 0
+data.Month$NegativeQuantity <- 0
+data.Month$PositiveValue <- 0
+data.Month$NegativeValue <- 0
+
+for(month in data.Month$YearMonth){
+  data.Month$PositiveQuantity[month == data.Month$YearMonth] <- sum(onlineRetails$PositiveQuantity[onlineRetails$YearMonth == month])
+  data.Month$NegativeQuantity[month == data.Month$YearMonth] <- sum(onlineRetails$NegativeQuantity[onlineRetails$YearMonth == month])
+  
+  data.Month$PositiveValue[month == data.Month$YearMonth] <- sum(onlineRetails$PositiveValue[onlineRetails$YearMonth == month])
+  data.Month$NegativeValue[month == data.Month$YearMonth] <- sum(onlineRetails$NegativeValue[onlineRetails$YearMonth == month])
+}
+
+data.Month$Index = 1:nrow(data.Month);
+@
+  
+<<setup-Day, include=FALSE, cache=TRUE>>=
+onlineRetails <- onlineRetails[order(onlineRetails$Day ),]
+
+data.Day <- unique(onlineRetails[c("Day")]);
+data.Day$PositiveQuantity <- 0
+data.Day$NegativeQuantity <- 0
+data.Day$PositiveValue <- 0
+data.Day$NegativeValue <- 0
+
+for(day in data.Day$Day){
+  data.Day$PositiveQuantity[day == data.Day$Day] <- sum(onlineRetails$PositiveQuantity[onlineRetails$Day == day])
+  data.Day$NegativeQuantity[day == data.Day$Day] <- sum(onlineRetails$NegativeQuantity[onlineRetails$Day == day])
+  
+  data.Day$PositiveValue[day == data.Day$Day] <- sum(onlineRetails$PositiveValue[onlineRetails$Day == day]*onlineRetails$PositiveValue[onlineRetails$Day == day])
+  data.Day$NegativeValue[day == data.Day$Day] <- sum(onlineRetails$NegativeValue[onlineRetails$Day == day])
+}
+
+data.Day$Index = 1:nrow(data.Day);
+@
+  
+<<setup-DayMonth, include=FALSE, cache=TRUE>>=
+onlineRetails <- onlineRetails[order(onlineRetails$Year, onlineRetails$Month, onlineRetails$Day),]
+
+data.DayMonth <- unique(onlineRetails[c("Day", "YearMonth")]);
+data.DayMonth$PositiveQuantity <- 0
+data.DayMonth$NegativeQuantity <- 0
+data.DayMonth$PositiveValue <- 0
+data.DayMonth$NegativeValue <- 0
+
+for(day in data.DayMonth$Day){
+  for(yearMonth in data.DayMonth$YearMonth){
+    data.DayMonth$PositiveQuantity[day == data.DayMonth$Day & yearMonth == data.DayMonth$YearMonth] = sum(onlineRetails$PositiveQuantity[day == onlineRetails$Day & yearMonth == onlineRetails$YearMonth])
+    data.DayMonth$NegativeQuantity[day == data.DayMonth$Day & yearMonth == data.DayMonth$YearMonth] = sum(onlineRetails$NegativeQuantity[day == onlineRetails$Day & yearMonth == onlineRetails$YearMonth])
+    
+    data.DayMonth$PositiveValue[day == data.DayMonth$Day & yearMonth == data.DayMonth$YearMonth] = sum(onlineRetails$PositiveValue[day == onlineRetails$Day & yearMonth == onlineRetails$YearMonth])
+    data.DayMonth$NegativeValue[day == data.DayMonth$Day & yearMonth == data.DayMonth$YearMonth] = sum(onlineRetails$NegativeValue[day == onlineRetails$Day & yearMonth == onlineRetails$YearMonth])
+  }
+}
+
+data.DayMonth$Index = 1:nrow(data.DayMonth);
+@
+  
+  <<setup-Country, include=FALSE, cache=TRUE>>=
+  data.Country <- unique(onlineRetails[c("Country")]);
+data.Country$PositiveQuantity <- 0
+data.Country$NegativeQuantity <- 0
+data.Country$PositiveValue <- 0
+data.Country$NegativeValue <- 0
+
+for(country in data.Country$Country){
+  data.Country$PositiveQuantity[country == data.Country$Country] <- sum(onlineRetails$PositiveQuantity[onlineRetails$Country == country])
+  data.Country$NegativeQuantity[country == data.Country$Country] <- sum(onlineRetails$NegativeQuantity[onlineRetails$Country == country])
+  
+  data.Country$PositiveValue[country == data.Country$Country] <- sum(onlineRetails$PositiveValue[onlineRetails$Country == country])
+  data.Country$NegativeValue[country == data.Country$Country] <- sum(onlineRetails$NegativeValue[onlineRetails$Country == country])
+}
+
+data.Country <- data.Country[order(data.Country$PositiveQuantity),]
+data.Country$Index = 1:nrow(data.Country);
+@
+  
+  <<setup-building-data, include=FALSE, cache=TRUE>>=
+  data <- unique(onlineRetails[c("Date", "Year", "YearMonth", "Month", "Day", "Country")])
+data <- data[order(data$Date, data$Year, data$YearMonth, data$Month, data$Day),]
+
+years <-  unique(onlineRetails[c("Year")])
+years$Index = 1:nrow(years)
+years <- years[order(years$Year),]
+years$Index = 1:nrow(years)
+
+for(year in years$Year){
+  data$IndexYear[year == data$Year] = years$Index[year == years$Year]
+}
+
+for(month in data.Month$YearMonth){
+  data$IndexYearMonth[month == data$YearMonth] = data.Month$Index[month == data.Month$YearMonth]
+}
+
+for(day in data$Day){
+  data$IndexDay[day == data$Day] = data.Day$Index[day == data.Day$Day]
+}
+
+for(day in data.DayMonth$Day){
+  for(yearMonth in data.DayMonth$YearMonth){
+    data$IndexDayMonth[day == data$Day & yearMonth == data$YearMonth] <- data.DayMonth$Index[day == data.DayMonth$Day & yearMonth == data.DayMonth$YearMonth] 
+  }
+}
+
+for(country in data.Country$Country){
+  data$IndexCountry[country == data$Country] <- data.Country$Index[country == data.Country$Country]
+}
+
+data$PositiveQuantity <- 0
+data$NegativeQuantity <- 0
+data$PositiveValue <- 0
+data$NegativeValue <- 0
+
+@
+  
+  <<build-data-content, include=FALSE, cache=TRUE>>=
+  for(year in years$Year){
+    for(yearMonth in data.Month$YearMonth){
+      for(day in data.Day$Day){
+        for(country in data.Country$Country){
+          data$PositiveQuantity[day == data$Day & year == data$Year & yearMonth == data$YearMonth & country == data$Country] <- sum(onlineRetails$PositiveQuantity[day == onlineRetails$Day & year == onlineRetails$Year & yearMonth == onlineRetails$YearMonth & country == onlineRetails$Country] )
+          data$NegativeQuantity[day == data$Day & year == data$Year & yearMonth == data$YearMonth & country == data$Country] <- sum(onlineRetails$NegativeQuantity[day == onlineRetails$Day & year == onlineRetails$Year & yearMonth == onlineRetails$YearMonth & country == onlineRetails$Country] )
+          
+          data$PositiveValue[day == data$Day & year == data$Year & yearMonth == data$YearMonth & country == data$Country] <- sum(onlineRetails$PositiveValue[day == onlineRetails$Day & year == onlineRetails$Year & yearMonth == onlineRetails$YearMonth & country == onlineRetails$Country] )
+          data$NegativeValue[day == data$Day & year == data$Year & yearMonth == data$YearMonth & country == data$Country] <- sum(onlineRetails$NegativeValue[day == onlineRetails$Day & year == onlineRetails$Year & yearMonth == onlineRetails$YearMonth & country == onlineRetails$Country] )
+        }
+      }
+    }
+  }
+@
+  
+    

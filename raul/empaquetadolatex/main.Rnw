@@ -1,0 +1,98 @@
+%Tipo de Documento [Conferencia]
+
+\documentclass[conference]{IEEEtran}
+
+%BIBLIOTECAS
+
+% Este paquete se utiliza para generar texto o graficas de relleno.
+%\usepackage{blindtext, graphicx}
+%Biblioteca para graficas
+\usepackage{graphicx}
+%Biblioteca para lectura de caracteres ortográficos (tildes..etc. ) 
+\usepackage[utf8]{inputenc}
+%Biblioteca para graficos vectrizados.svg 
+\usepackage{svg}
+\usepackage{enumerate}
+%Biblioteca para enumerar figuras tablas.. etc en español 
+\usepackage[english]{babel}
+\usepackage{hyperref}
+
+
+%INICIO DEL DOCUMENTO
+\begin{document}
+
+
+% TITULO DEL PAPER
+\title{Data analysis of the Online Retails DataSet}
+
+
+% NOMBRE DE LOS AUTORES
+\author{
+ \IEEEauthorblockN{Raul Alejandro Buitrago Castellanos}
+ \IEEEauthorblockA{Ingeniero de Sistemas\\ 
+  Universidad Distrital Francisco José de Caldas\\
+  Bogotá D.C., Colombia\\
+  Email: raulhabits@gmail.com}
+}
+
+%TITULO
+\maketitle
+
+\input{estructura-documento/abstract.tex} 
+
+%Iniciar Palabras Clave Formato IEEE
+\begin{IEEEkeywords}
+	Dataset, Data Mining, Big Data Analytics, Business intelligence.
+\end{IEEEkeywords}
+
+\input{estructura-documento/introduccion.tex}
+\input{estructura-documento/objetivos.tex}
+\input{estructura-documento/marco-teorico.tex}
+\input{estructura-documento/estado-arte.tex}
+\input{estructura-documento/metodologia.tex}
+\input{estructura-documento/variableRecognizing.tex}
+
+<<setupResearchQuestions, child='R/setupResearchQuestions.Rnw', echo=FALSE, results='hide', warning=FALSE>>=  
+@
+
+<<ResearchQuestions, child='R/ResearchQuestions.Rnw', echo=FALSE, results='hide', warning=FALSE>>=  
+@
+
+<<exploratory, child='R/exploratory.Rnw', echo=FALSE, results='hide', warning=FALSE>>=  
+@
+
+<<multivariateAnalysis, child='R/MultivariateAnalysis.Rnw', echo=FALSE, results='hide', warning=FALSE>>=  
+@
+
+<<findingPatterns, child='R/findingPatterns.Rnw', echo=FALSE, results='hide', warning=FALSE>>=  
+@
+
+
+\section{Conclusions}
+\begin{itemize}
+ \item The data analysis of the dataset allows establishing some relationships and patterns to describe the behavior of the data.
+ \item The critical task of the data analysis consists in understanding the dataset, the data preparation, and the tasks related with the patterns definition.
+ \item The linear regression and the clustering using the K-means algorithm are good options to analyze some behaviors of the marketing.
+ 
+ 
+\end{itemize}
+
+
+%BIBLIOGRAFÍA
+
+%ENTORNO {thebibliography}
+%Permite al autor listar las referencias utilizadas y citarlas en algun punto del texto.
+
+\begin{thebibliography}{1}
+		
+	\bibitem{biblio1} G. Canavos, Probabilidad y estadistica aplicaciones y metodos. Mc-Graw Hill, 1988. 
+	\bibitem{biblio2} H. Chen, BUSINESS INTELLIGENCE AND ANALYTICS: FROM BIG DATA TO BIG IMPACT, MIS Quarterly Vol. 36 No. 4, pp. 1165-1188/December 2012 
+	\bibitem{biblio3} Daqing Chen, Sai Liang Sain, and Kun Guo, Data mining for the online retail industry: A case study of RFM model-based customer segmentation using data mining, Journal of Database Marketing and Customer Strategy Management, Vol. 19, No. 3, pp. 197â€“208, 2012 
+	\bibitem{biblio4} Ashishkumar Singh, Grace Rumantir, Annie South, Blair Bethwaite, Proceedings of the 2014 International Conference on Big Data Science and Computing.
+	\bibitem{biblio5} A decision-making framework for precision marketing, Zhen You, Yain-Whar Si, Defu Zhang, XiangXiang Zeng, Stephen C.H. Leung c, Tao Li, Expert Systems with Applications, 42 (2015) 3357â€“3367.
+	\bibitem{knitr-book} XIE, Yihui. Dynamic documents with R and knitr. Chapman \& Hall. Second edition. 2015.  
+	\bibitem{latex-book} DE CASTRO KORGI, Rodrigo. El universo LATEX. Facultad de ciencias. Universidad Nacional de Colombia. Segunda edicion. 2003.  
+
+\end{thebibliography}
+
+\end{document}

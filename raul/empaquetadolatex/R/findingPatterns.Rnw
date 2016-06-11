@@ -1,0 +1,36 @@
+%SECCIÓN 3. PREGUNTAS INVESTIGACION
+\section{Finding Patterns}
+In this section we are going to establish some patterns between the data using the linear regression algorithm and the K-means algorithm.\\
+\subsection{Linear Regression}
+This algorithm is used to build a model to reproduce the information drawing the nearest line to all the points.\\
+For this dataset we'll use this algorithm in the relationship between the month days and the quantity.
+<<linear-regression>>=
+model <- lm(data.DayMonth$PositiveQuantity ~ data.DayMonth$Index)
+plot(data.DayMonth$Index, data.DayMonth$PositiveQuantity)
+abline(model, col=2, lwd=5)
+@
+
+<<linear-regression2>>=
+model2 <- lm(data.DayMonth$NegativeQuantity ~ data.DayMonth$Index)
+plot(data.DayMonth$Index, data.DayMonth$NegativeQuantity)
+abline(model2, col=2, lwd=5)
+@
+
+\subsection{Clustering}
+This algorithm is used to build a model to reproduce the information drawing the nearest centroid to all the points of the cluster.\\
+For this dataset we'll use this algorithm in the relationship between the months days and the quantity.
+
+<<kmeans>>=
+positiveData <- data.frame("Index"=data.Month$Index, "Quantity"=data.Month$PositiveQuantity)
+kmeansPositive <- kmeans(positiveData, 4)
+plot(positiveData, col=kmeansPositive$cluster)
+points(kmeansPositive$centers)
+points(kmeansPositive$centers,pch=4, cex=4)
+
+positiveDendogram <- dist(positiveData)
+hcPositive <- hclust(positiveDendogram, method="complete")
+plot(hcPositive)
+rect.hclust(hcPositive, k=4)
+@
+
+

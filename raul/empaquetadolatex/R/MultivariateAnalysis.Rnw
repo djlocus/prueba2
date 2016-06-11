@@ -1,0 +1,14 @@
+%SECCIÓN 3. PREGUNTAS INVESTIGACION
+\section{Multivariate Analysis}
+In this section you'll find the correlation analysis of variables to check the importance of them. This analysis allows checking the influence of an attribute on other, this analysis is commonly used to discard any attribute if it isn't important for other attributes.\\
+<<pairs>>=
+finalData <- subset(data, select=IndexYear: NegativeQuantity)
+ pairs.panels(finalData)
+@
+
+As you can see in the previous chart we can think some conclusions like these
+\begin{itemize}
+ \item Applying the Pearson's correlation, we can discard the value related with the Country, because the correlation index is too near than 0
+ \item The year and the month are some of the most important variables of the data analysis of this study.
+ \item The Sales affects directly the Devolutions
+\end{itemize}

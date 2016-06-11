@@ -1,0 +1,407 @@
+%Tipo de Documento [Conferencia]
+
+\documentclass[conference]{IEEEtran}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+
+%BIBLIOTECAS
+
+% Este paquete se utiliza para generar texto o graficas de relleno.
+%\usepackage{blindtext, graphicx}
+%Biblioteca para graficas
+\usepackage{graphicx}
+%Biblioteca para lectura de caracteres ortográficos (tildes..etc. ) 
+\usepackage[utf8]{inputenc}
+%Biblioteca para graficos vectrizados.svg 
+\usepackage{svg}
+\usepackage{enumerate}
+%Biblioteca para enumerar figuras tablas.. etc en español 
+\usepackage[english]{babel}
+\usepackage{hyperref}
+
+
+%INICIO DEL DOCUMENTO
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+
+% TITULO DEL PAPER
+\title{Data analysis of the Online Retails DataSet}
+
+
+% NOMBRE DE LOS AUTORES
+\author{
+ \IEEEauthorblockN{Raul Alejandro Buitrago Castellanos}
+ \IEEEauthorblockA{Ingeniero de Sistemas\\ 
+  Universidad Distrital Francisco José de Caldas\\
+  Bogotá D.C., Colombia\\
+  Email: raulhabits@gmail.com}
+}
+
+%TITULO
+\maketitle
+
+\input{estructura-documento/abstract.tex} 
+
+%Iniciar Palabras Clave Formato IEEE
+\begin{IEEEkeywords}
+	Dataset, Data Mining, Big Data Analytics, Business intelligence.
+\end{IEEEkeywords}
+
+\input{estructura-documento/introduccion.tex}
+\input{estructura-documento/objetivos.tex}
+\input{estructura-documento/marco-teorico.tex}
+\input{estructura-documento/estado-arte.tex}
+\input{estructura-documento/metodologia.tex}
+\input{estructura-documento/variableRecognizing.tex}
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+
+
+%SECCIÓN 3. PREGUNTAS INVESTIGACION
+\section{Research Questions}
+A correct investigation begins with the right questions, then an optimal definition of what else will be the proposal of the research. The following questions are used in this research, these questions must be classified according with the kind of it.
+
+  \subsection{Descriptive.}
+  A descriptive question is used to identify and know the characteristics of the dataset.
+  \begin{itemize}
+   \item What's the min date of the measurement?
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## [1] "2010-12-01"
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+   \item What's the max date of the measurement?
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## [1] "2011-12-09"
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+   \item What's the product quantity sold in the measurement?
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## [1] 5660981
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+   \item What's the product quantity returned in the measurement?
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{verbatim}
+## [1] 484531
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  \end{itemize}
+  \subsection{Exploratory.}
+   An exploratory question consists in the searching of patterns or relations to support an investigation question.
+  \begin{itemize}
+   \item Which month had major product sales and devolutions?
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/monthMajorSalesDevolutionsQuantity-1} 
+
+\end{knitrout}
+
+% latex table generated in R 3.3.0 by xtable 1.8-2 package
+% Sat May 28 14:51:01 2016
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrlrr}
+  \hline
+ & Index & YearMonth & PositiveQuantity & NegativeQuantity \\ 
+  \hline
+1 &   1 & 2010 - 12 & 362316.00 & 20088.00 \\ 
+  42482 &   2 & 2011 - 1 & 397716.00 & 88750.00 \\ 
+  77629 &   3 & 2011 - 2 & 286695.00 & 8706.00 \\ 
+  105336 &   4 & 2011 - 3 & 384950.00 & 33078.00 \\ 
+  142084 &   5 & 2011 - 4 & 312176.00 & 23078.00 \\ 
+  172000 &   6 & 2011 - 5 & 399425.00 & 19034.00 \\ 
+  209030 &   7 & 2011 - 6 & 394337.00 & 52714.00 \\ 
+  245904 &   8 & 2011 - 7 & 407539.00 & 16423.00 \\ 
+  285422 &   9 & 2011 - 8 & 425016.00 & 18817.00 \\ 
+  320706 &  10 & 2011 - 9 & 575416.00 & 25599.00 \\ 
+  370932 &  11 & 2011 - 10 & 628745.00 & 58213.00 \\ 
+  431674 &  12 & 2011 - 11 & 771598.00 & 31312.00 \\ 
+  516385 &  13 & 2011 - 12 & 315052.00 & 88719.00 \\ 
+   \hline
+\end{tabular}
+\caption{Dataset of product sales and devolution} 
+\end{table}
+
+   \item Which country bought the major products quantity in January of 2011?
+
+% latex table generated in R 3.3.0 by xtable 1.8-2 package
+% Sat May 28 14:51:01 2016
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlrrr}
+  \hline
+ & Country & PositiveQuantity & NegativeQuantity & Index \\ 
+  \hline
+44153 & Bahrain & 0.00 & 54.00 &   1 \\ 
+  47164 & Japan & 0.00 & 45.00 &   2 \\ 
+  50792 & Israel & 100.00 & 0.00 &   3 \\ 
+  54381 & Cyprus & 144.00 & 0.00 &   4 \\ 
+  72851 & Channel Islands & 259.00 & 4.00 &   5 \\ 
+  58992 & Poland & 288.00 & 0.00 &   6 \\ 
+  72247 & Iceland & 315.00 & 0.00 &   7 \\ 
+  72986 & Lebanon & 386.00 & 0.00 &   8 \\ 
+  69008 & Greece & 526.00 & 0.00 &   9 \\ 
+  66153 & Finland & 765.00 & 0.00 &  10 \\ 
+  43858 & Belgium & 792.00 & 9.00 &  11 \\ 
+  70759 & Singapore & 1091.00 & 0.00 &  12 \\ 
+  43780 & Italy & 1121.00 & 25.00 &  13 \\ 
+  69624 & Hong Kong & 1121.00 & 0.00 &  14 \\ 
+  43781 & Portugal & 2094.00 & 16.00 &  15 \\ 
+  62999 & Switzerland & 2993.00 & 0.00 &  16 \\ 
+  43420 & Sweden & 3097.00 & 1.00 &  17 \\ 
+  45623 & Spain & 3845.00 & 8.00 &  18 \\ 
+  45512 & Australia & 5644.00 & 0.00 &  19 \\ 
+  44295 & EIRE & 8794.00 & 106.00 &  20 \\ 
+  44206 & Germany & 9077.00 & 171.00 &  21 \\ 
+  43857 & France & 9199.00 & 44.00 &  22 \\ 
+  57394 & Netherlands & 20417.00 & 0.00 &  23 \\ 
+  42482 & United Kingdom & 325648.00 & 88267.00 &  24 \\ 
+   \hline
+\end{tabular}
+\caption{Information of buys in January of 2011} 
+\end{table}
+
+   
+   \item Which country had major sales and devolutions of products?
+% latex table generated in R 3.3.0 by xtable 1.8-2 package
+% Sat May 28 14:51:01 2016
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrlrr}
+  \hline
+ & Index & Country & PositiveQuantity & NegativeQuantity \\ 
+  \hline
+100811 &   1 & Saudi Arabia & 80.00 & 5.00 \\ 
+  38314 &   2 & Bahrain & 314.00 & 54.00 \\ 
+  395473 &   3 & RSA & 352.00 & 0.00 \\ 
+  157300 &   4 & Brazil & 356.00 & 0.00 \\ 
+  72986 &   5 & Lebanon & 386.00 & 0.00 \\ 
+  168150 &   6 & European Community & 499.00 & 2.00 \\ 
+  7987 &   7 & Lithuania & 652.00 & 0.00 \\ 
+  103599 &   8 & Czech Republic & 671.00 & 79.00 \\ 
+  217685 &   9 & Malta & 970.00 & 26.00 \\ 
+  89571 &  10 & United Arab Emirates & 982.00 & 0.00 \\ 
+  69008 &  11 & Greece & 1557.00 & 1.00 \\ 
+  14939 &  12 & Iceland & 2458.00 & 0.00 \\ 
+  164465 &  13 & USA & 2458.00 & 1424.00 \\ 
+  119192 &  14 & Canada & 2763.00 & 0.00 \\ 
+  152713 &  15 & Unspecified & 3300.00 & 0.00 \\ 
+  6609 &  16 & Poland & 3684.00 & 31.00 \\ 
+  31983 &  17 & Israel & 4409.00 & 56.00 \\ 
+  69624 &  18 & Hong Kong & 4773.00 & 4.00 \\ 
+  31465 &  19 & Austria & 4881.00 & 54.00 \\ 
+  70759 &  20 & Singapore & 5241.00 & 7.00 \\ 
+  29733 &  21 & Cyprus & 6361.00 & 44.00 \\ 
+  7215 &  22 & Italy & 8112.00 & 113.00 \\ 
+  20018 &  23 & Denmark & 8235.00 & 47.00 \\ 
+  20001 &  24 & Channel Islands & 9491.00 & 12.00 \\ 
+  34084 &  25 & Finland & 10704.00 & 38.00 \\ 
+  7135 &  26 & Portugal & 16258.00 & 78.00 \\ 
+  1237 &  27 & Norway & 19338.00 & 91.00 \\ 
+  7280 &  28 & Belgium & 23237.00 & 85.00 \\ 
+  9784 &  29 & Japan & 26016.00 & 798.00 \\ 
+  6422 &  30 & Spain & 27951.00 & 1127.00 \\ 
+  5321 &  31 & Switzerland & 30630.00 & 305.00 \\ 
+  30079 &  32 & Sweden & 36083.00 & 446.00 \\ 
+  198 &  33 & Australia & 84209.00 & 556.00 \\ 
+  27 &  34 & France & 112104.00 & 1624.00 \\ 
+  1110 &  35 & Germany & 119263.00 & 1815.00 \\ 
+  1405 &  36 & EIRE & 147447.00 & 4810.00 \\ 
+  386 &  37 & Netherlands & 200937.00 & 809.00 \\ 
+  1 &  38 & United Kingdom & 4733819.00 & 469990.00 \\ 
+   \hline
+\end{tabular}
+\caption{Global information about the countries consumption} 
+\end{table}
+
+   
+  \end{itemize}
+  \subsection{Inferential.}
+   An inferential question consists in the creation of an hypothesis to be solved analyzing the information.
+  \begin{itemize}
+   \item Was France the country with major sales in January of 2011?\\
+   The Table III suggest that United Kingdom had the major sales in January of 2011
+  \end{itemize}
+
+
+%SECCIÓN 3. PREGUNTAS INVESTIGACION
+\section{Exploratory Analysis}
+In this section was made an analysis in some scenarios to check the information related with the "frequencies" and the "central tendency measures"\\
+
+ The following information contains the resume of the exploratory analysis of the variables through the measure period
+% latex table generated in R 3.3.0 by xtable 1.8-2 package
+% Sat May 28 14:51:01 2016
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlrrrrr}
+  \hline
+ & Variable & mean & min & max & var & sd \\ 
+  \hline
+1 & Year & 2010.92 & 2010.00 & 2011.00 & 0.07 & 0.27 \\ 
+  2 & Month & 7.55 & 1.00 & 12.00 & 12.31 & 3.51 \\ 
+  3 & Day & 15.02 & 1.00 & 31.00 & 75.07 & 8.66 \\ 
+  4 & Sold & 10.45 & 0.00 & 80995.00 & 24115.74 & 155.29 \\ 
+  5 & Returned & 0.89 & 0.00 & 80995.00 & 23424.97 & 153.05 \\ 
+   \hline
+\end{tabular}
+\caption{Summary of main variables} 
+\end{table}
+
+ 
+ As you can see in the table, it's a general overview around the dataset because meeting the exploratory information of the data you can assume you know the data set.
+
+
+%SECCIÓN 3. PREGUNTAS INVESTIGACION
+\section{Multivariate Analysis}
+In this section you'll find the correlation analysis of variables to check the importance of them. This analysis allows checking the influence of an attribute on other, this analysis is commonly used to discard any attribute if it isn't important for other attributes.\\
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/pairs-1} 
+
+\end{knitrout}
+
+As you can see in the previous chart we can think some conclusions like these
+\begin{itemize}
+ \item Applying the Pearson's correlation, we can discard the value related with the Country, because the correlation index is too near than 0
+ \item The year and the month are some of the most important variables of the data analysis of this study.
+ \item The Sales affects directly the Devolutions
+\end{itemize}
+
+
+%SECCIÓN 3. PREGUNTAS INVESTIGACION
+\section{Finding Patterns}
+In this section we are going to establish some patterns between the data using the linear regression algorithm and the K-means algorithm.\\
+\subsection{Linear Regression}
+This algorithm is used to build a model to reproduce the information drawing the nearest line to all the points.\\
+For this dataset we'll use this algorithm in the relationship between the month days and the quantity.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/linear-regression-1} 
+
+\end{knitrout}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/linear-regression2-1} 
+
+\end{knitrout}
+
+\subsection{Clustering}
+This algorithm is used to build a model to reproduce the information drawing the nearest centroid to all the points of the cluster.\\
+For this dataset we'll use this algorithm in the relationship between the months days and the quantity.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/kmeans-1} 
+
+\includegraphics[width=\maxwidth]{figure/kmeans-2} 
+
+\end{knitrout}
+
+
+
+
+\section{Conclusions}
+\begin{itemize}
+ \item The data analysis of the dataset allows establishing some relationships and patterns to describe the behavior of the data.
+ \item The critical task of the data analysis consists in understanding the dataset, the data preparation, and the tasks related with the patterns definition.
+ \item The linear regression and the clustering using the K-means algorithm are good options to analyze some behaviors of the marketing.
+ 
+ 
+\end{itemize}
+
+
+%BIBLIOGRAFÍA
+
+%ENTORNO {thebibliography}
+%Permite al autor listar las referencias utilizadas y citarlas en algun punto del texto.
+
+\begin{thebibliography}{1}
+		
+	\bibitem{biblio1} G. Canavos, Probabilidad y estadistica aplicaciones y metodos. Mc-Graw Hill, 1988. 
+	\bibitem{biblio2} H. Chen, BUSINESS INTELLIGENCE AND ANALYTICS: FROM BIG DATA TO BIG IMPACT, MIS Quarterly Vol. 36 No. 4, pp. 1165-1188/December 2012 
+	\bibitem{biblio3} Daqing Chen, Sai Liang Sain, and Kun Guo, Data mining for the online retail industry: A case study of RFM model-based customer segmentation using data mining, Journal of Database Marketing and Customer Strategy Management, Vol. 19, No. 3, pp. 197â€“208, 2012 
+	\bibitem{biblio4} Ashishkumar Singh, Grace Rumantir, Annie South, Blair Bethwaite, Proceedings of the 2014 International Conference on Big Data Science and Computing.
+	\bibitem{biblio5} A decision-making framework for precision marketing, Zhen You, Yain-Whar Si, Defu Zhang, XiangXiang Zeng, Stephen C.H. Leung c, Tao Li, Expert Systems with Applications, 42 (2015) 3357â€“3367.
+	\bibitem{knitr-book} XIE, Yihui. Dynamic documents with R and knitr. Chapman \& Hall. Second edition. 2015.  
+	\bibitem{latex-book} DE CASTRO KORGI, Rodrigo. El universo LATEX. Facultad de ciencias. Universidad Nacional de Colombia. Segunda edicion. 2003.  
+
+\end{thebibliography}
+
+\end{document}

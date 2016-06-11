@@ -1,0 +1,529 @@
+%Tipo de Documento [Conferencia]
+
+\documentclass[conference]{IEEEtran}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+
+%BIBLIOTECAS
+
+% Este paquete se utiliza para generar texto o graficas de relleno.
+%\usepackage{blindtext, graphicx}
+%Biblioteca para graficas
+\usepackage{graphicx}
+%Biblioteca para lectura de caracteres ortográficos (tildes..etc. ) 
+\usepackage[utf8]{inputenc}
+%Biblioteca para enumeración de imagenes
+\usepackage{float}
+%Biblioteca para graficos vectrizados.svg 
+\usepackage{svg}
+\usepackage{enumerate}
+%Biblioteca para enumerar figuras tablas.. etc en español 
+\usepackage[spanish, es-tabla]{babel}
+\usepackage[spanish]{babel}
+%\usepackage[spanish,USenglish]{babel}
+
+%INICIO DEL DOCUMENTO
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+	
+	
+	% TITULO DEL PAPER
+\title{Análisis de los Aportes al Sistema de Seguridad Social Colombiano con datos del DANE para el a\~no 2015}
+
+% NOMBRE DE LOS AUTORES
+\author{
+	\IEEEauthorblockN{Fernando Buitrago }
+		
+	\IEEEauthorblockA{Universidad Distrital Francisco José de Caldas\\
+		Bogotá D.C., Colombia\\
+		Email: Fernadobuitragoa@gmail.com  }
+	%\and
+}
+%TITULO
+\maketitle
+
+%abstract del documento
+\input{01itemsDoc/abstract.tex}
+
+%Iniciar Palabras Clave Formato IEEE
+\begin{IEEEkeywords}
+	Linked Data, Data Mining, Dataset, Open Data.
+\end{IEEEkeywords}
+
+%Introduccion 
+\input{01itemsDoc/introduccion.tex}
+
+
+%Metodologia
+\input{01itemsDoc/metodologia.tex}
+
+%Preguntas de investigacion
+\input{01itemsDoc/DefinicionProblema.tex}
+
+
+	
+	% Analisis Datos DANE
+
+\section{An\'{a}lisis de la Información del DANE}
+
+A continuaci\'{o}n se presenta el an\'{a}lisis  de la informaciòn del DANE clasificada por la variable Edad del aportante.  Los datos han sido divididos en cinco grupos para determinar el comportamiento de los datos a trav\'{e}s del an\'{a}lisis de gr\'{a}ficos y de estad\'{i}stica b\'{a}sica para permitir explorar la distribuci\'{o}n de los datos e identificar caracter\'{i}sticas que resuleva la pregunta planteada durante la formulaci\'{o}n del problema.   
+
+%Configuración de Clusters de Datos del DANE
+
+
+
+
+\subsection{An\'{a}lisis inicial}
+Lo primero que se analizar\'{a} es el comportamiento de los datos en las variables Total Aportantes, G\'{e}nero de los Aportantes y Edad del Aportante; obteniendo los siguientes resultados:
+%\vspace{1mm}
+
+
+
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: vie, jun 03, 2016 - 05:04:03 p.m.
+\begin{table}[!htbp] \centering 
+  \caption{Total Poblacion Analizada} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\ 
+\hline \\[-1.8ex] 
+TotalAportes & 42 & 140,206.500 & 170,046.000 & 98 & 890,000 \\ 
+Genero & 99 & 1.535 & 0.501 & 1 & 2 \\ 
+Edad & 99 & 40.253 & 22.909 & 2 & 94 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+
+
+%\vspace{1mm}
+{\footnotesize \textbf{Convenciones:} Genero) 1: Mujer, 2: Hombre; Edad) Edad del Aportante Analizado.}
+
+%\vspace{1mm}
+El an\'{a}lisis principal de esta investigaci\'{o}n se enfoca en comprobar s\'{i} el monto de los aportes aumenta con relaci\'{o}n a la variable edad del aportante. En la revisi\'{o}n de los datos se evidencia que el valor de la media  est\'{a} m\'{a}s cerca del valor m\'{i}nimo  aportado al sistema de seguridad social colombiano.  Por tal raz\'{o}n se ha hace necesario ampliar el an\'{a}lisis a trav\'{e}s de un gr\'{a}fico para poder visualizar mejor los datos de la variable Edad del Aportante.   
+
+\begin{figure}[H]
+	\centering
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/EdadAportante-1} 
+
+\end{knitrout}
+	\caption{Comportamiento de la variable Edad del Aportante}
+\end{figure}
+
+De acuerdo con los datos de la gr\'{a}fica, inicialmente se observan aportes a partir de 22 años, los cuales disminuyen hasta alcanzar 35 años. Posteriormente, el n\'{u}mero de aportante al sistema de seguridad social se mantiene entre el rango de 35 a 45 años.  Luego, la gr\'{a}fica presenta un aumento en el n\'{u}mero de aportantes hasta alcanzar la edad de 60 años. Finalmente, el n\'{u}mero de aportes disminuye hacia los 94 años. En consecuencia, basados en los resultados de los datos, el sistema de seguridad social colombiano est\'{a} financiado por aportes provenientes de ciudadanos que tienen una edad entre 22 hasta 94 años.
+
+Tambi\'{e}n, analizaremos en la siguiente gr\'{a}fica, la distribuci\'{o}n de los datos relacionados con la variable montos de los aportes al sistema de seguridad social, observando lo siguiente:
+
+\begin{figure}[H]
+	\centering
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/MontosAportes-1} 
+
+\end{knitrout}
+	\caption{Comportamiento de la variable Monto Aportado al Sistema de Seguridad Social}
+\end{figure}
+
+De acuerdo con los datos de la gr\'{a}fica, se observan aportes entre el rango de 98 a 890.000 pesos colombianos.  Los montos de los aportes empiezan con valores menores a la media, es decir 84.000 pesos, posteriormente, se observa el mayor incremento de los aportes en 140.000 pesos y luego comienzan a disminuir hasta los 250.000 pesos colombianos.  Seguidamente, se observan valores alrededor de lo 350.000 y 500.000 pesos colombianos y finalmente, se observa un registro de 890.000 pesos colombianos.  
+De acuerdo con los datos observados, los colombianos tiene un aporte bajo al sistema de Seguridad Social y se concentra alrededor de la media es decir 140.000 pesos colombianos.
+
+
+Con fundamento en los resultados preliminares previos, realizaremos un an\'{a}lisis del conjunto de datos m\'{a}s al detalle, de acuerdo con la informaci\'{o}n disponible.
+
+\vspace{-0mm}
+\subsection{Analizando población que aporta al Sistema de Seguridad Social Colombiano cuya edad comprende el rando de 72 hasta 94 años.}
+
+Al comparar la media del total de la poblaci\'{o}n de ciudadanos que aportan al sistema de seguridad social colombiano con la media de la poblaci\'{o}n cuya edad est\'{a} entre 72 a 94 años se observa un incremento de 116.794 pesos colombianos al pasar de 140.206 pesos colombianos a 257.584 pesos colombianos, respectivamente, con lo cual, preliminarmente confirmamos que aumenta el monto de los valores cotizados a este sistema conforme la edad del aportante aumenta. 
+
+
+%Los datos más representativos se dan a continuación:
+
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: vie, jun 03, 2016 - 05:04:04 p.m.
+\begin{table}[!htbp] \centering 
+  \caption{Total de la población de aportantes al sistema de seguridad social con edad entre 72 y 94 años.} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\ 
+\hline \\[-1.8ex] 
+TotalAportes & 5 & 257,584.200 & 364,146.600 & 99 & 890,000 \\ 
+Genero & 5 & 1.200 & 0.447 & 1 & 2 \\ 
+Edad & 5 & 76.200 & 3.421 & 72 & 81 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+
+
+\vspace{1mm}
+{\footnotesize \textbf{Convenciones:} Genero) 1: Mujer, 2: Hombre; Edad) Edad del Aportante Analizado.}
+
+De acuerdo con la gr\'{a}fica, se observa un aportante con edad superior a 80 años quien aporta al sistema de seguridad social colombiano. Al comparar el conjunto de datos de los aportes al sistema de seguridad social colombiano con este monto aportado, se observa que este dato tiene una caracter\'{i}stica \'{u}nica por ser quien aport\'{o} el mayor monto al sistema de seguridad social de acuerdo con la informaci\'{o}n analizada. 
+
+%\vspace{0mm}
+\begin{figure}[H]
+	\centering
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/Aportantes1943-1} 
+
+\end{knitrout}
+	\caption{Población de aportantes del sistema de seguridad social con edad entre 72 y 94 años.}
+\end{figure}
+
+Adicionalmente, en la siguiente gr\'{a}fica se observa, que los aportes de los ciudadamos cuya edad est\'{a} entre 72 y 94 años presentan una brecha entre el valor m\'{a}ximo y la media para este rango, existiendo una diferencia de 633.000 pesos colombianos al pasar de 257.000 a 890.000 pesos colombianos, respectivamente.  Tambi\'{e}n, se observa  en la distribuci\'{o}n de los montos aportados, la mayor diferencia entre el menor y el mayor valor aportado, evidenciando la diferencia social de los aportes para esta categor\'{i}a de datos analizados.
+
+Al comparar los datos de la gr\'{a}fica de la variable edad y la variable valor aportado, se observa que la primera tiene una distribuci\'{o}n uniforme, mientras que la segunda evidencia una inclinaci\'{o}n de los datos a la izquierda, concentrado los datos antes de los 250.000 pesos colombianos, y evidenciando que el valor m\'{a}ximo se presenta con poca frecuencia como aporte al sistema social colombiano.   
+
+
+%\vspace{0mm}
+\begin{figure}[H]
+	\centering
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/MontoAporte1943-1} 
+
+\end{knitrout}
+	\caption{Montos de los aportes al sistema de seguridad social de la poblacion con edad entre 72 y 94 años.}
+\end{figure}
+
+
+
+
+%\vspace{-10mm}
+\subsection{Analizando población  que aporta al Sistema de Seguridad Social Colombiano cuya edad comprende el rango de 50 años y menos de 71 años.}
+
+%Los datos más representativos se dan a continuación:
+
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: vie, jun 03, 2016 - 05:04:04 p.m.
+\begin{table}[!htbp] \centering 
+  \caption{Total de la poblacion de aportantes del sistema de seguridad social con edad entre 50 y 71 años.} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\ 
+\hline \\[-1.8ex] 
+TotalAportes & 16 & 169,552.000 & 160,928.200 & 98 & 492,000 \\ 
+Genero & 16 & 1.562 & 0.512 & 1 & 2 \\ 
+Edad & 16 & 59.438 & 5.329 & 50 & 66 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+
+
+\vspace{1mm}
+{\footnotesize \textbf{Convenciones:} Genero) 1: Mujer, 2: Hombre; Edad) Edad del Aportante Analizado.}
+
+Al comparar la media del total de la poblaci\'{o}n de ciudadanos que aportan al Sistema de Seguridad Social Colombiano con la media de la poblaci\'{o}n cuya edad est\'{a} entre 50 y 71 años, se observa un incremento de 29.346 pesos colombianos al pasar de 140.206 pesos colombianos a 169.552 pesos colombianos, respectivamente, con lo cual, continua la tendencia, al aumentar el monto de los valores cotizados a este sistema conforme la edad del aportante aumenta. 
+
+
+Basados en los datos de la siguiente gr\'{a}fica, se observa constancia en el n\'{u}mero de aportantes que existen para el rango de los ciudadanos con edad entre 50 a 59 años, y un incremento en el n\'{u}mero de aportantes en el rango de 60 a 71 años.  Llama la atenci\'{o}n el incremento del n\'{u}mero de aportantes a los 71 años, lo cual corresponden a ciudadanos pensionados por el Sistema de Seguridad Social Colombiano.  
+
+%\vspace{-5mm}
+\begin{figure}[H]
+	\centering
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/Aportantes1965-1} 
+
+\end{knitrout}
+	\caption{Población de aportantes del sistema de seguridad social con edad entre 50 y 71 años.}
+\end{figure}
+
+Tambi\'{e}n revisaremos la calidad de los aportes realizado al sistema de acuerdo con los datos de este rango, presentados en la siguiente gr\'{a}fica:
+
+
+%\vspace{-5mm}
+\begin{figure}[H]
+	\centering
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/Aportantes1965monto-1} 
+
+\end{knitrout}
+	\caption{Montos de los aportes al sistema de seguridad social con edad entre 50 y 71 años.}
+\end{figure}
+
+Al comparar la media del total de la poblaci\'{o}n de ciudadanos que aportan al Sistema de Seguridad Social Colombiano con la media de la poblaci\'{o}n cuya edad est\'{a} entre 50 a 71 años, se observa un incremento de 29.346 pesos colombianos al pasar de 140.206 pesos colombianos a 169.552 pesos colombianos, respectivamente. 
+
+%\vspace{-10mm}
+\subsection{Analizando población de aportantes del sistema de seguridad social con edad entre 27 y 50 años.}
+%Los datos más representativos se dan a continuación:
+
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: vie, jun 03, 2016 - 05:04:05 p.m.
+\begin{table}[!htbp] \centering 
+  \caption{Total de la población de aportantes al sistema de seguridad social con edad entre 27 y 50 años.} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\ 
+\hline \\[-1.8ex] 
+TotalAportes & 17 & 100,798.200 & 85,902.920 & 98 & 353,200 \\ 
+Genero & 17 & 1.412 & 0.507 & 1 & 2 \\ 
+Edad & 17 & 38.235 & 6.978 & 27 & 49 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+
+
+\vspace{1mm}
+{\footnotesize \textbf{Convenciones:} Genero) 1: Mujer, 2: Hombre; Edad) Edad del Aportante Analizado.}
+
+Al comparar la media de los aportes del total de la poblaci\'{o}n de ciudadanos que aportan al Sistema de Seguridad Social Colombiano con la media de la poblaci\'{o}n cuya edad est\'{a} entre 27 a 50 años, se observa un disminuci\'{o}n de 39.408 pesos colombianos al pasar de 140.206 pesos colombianos a 100.798 pesos colombianos, respectivamente, con lo cual, continua la tendencia, al aumentar el monto de los valores cotizados a este sistema conforme la edad del aportante aumenta. 
+
+
+%\vspace{-5mm}
+\begin{figure}[H]
+	\centering
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/Aportantes1988-1} 
+
+\end{knitrout}
+	\caption{Población de aportantes del sistema de seguridad social con edad entre 27 y 50 años.}
+\end{figure}
+
+Al revisar los montos aportados en este rango, se observa una gr\'{a}fica inclinada a la izquierda, indicando que el valor de los montos est\'{a}n sobre los 100.000 pesos colombianos. Tambi\'{e}n, se observa un \'{u}nico dato de 353,200 para este rango de datos evidenciando una diferencia social entre el m\'{a}ximo valor y la media de los aportes al sistema de seguridad social colombiano en este rango de datos analizado.
+
+
+%\vspace{-5mm}
+\begin{figure}[H]
+	\centering
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/Aportantes1988monto-1} 
+
+\end{knitrout}
+	\caption{Montos de los aportes al sistema de seguridad social con edad entre 27 y 50 años.}
+\end{figure}
+
+
+%\vspace{-10mm}
+\subsection{Analizando población de aportantes del sistema de seguridad social con edad entre 22 y 26 años.}
+%Los datos más representativos se dan a continuación:
+
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: vie, jun 03, 2016 - 05:04:06 p.m.
+\begin{table}[!htbp] \centering 
+  \caption{Total de la población de aportantes del sistema de seguridad social con edad entre 22 26 años.} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\ 
+\hline \\[-1.8ex] 
+TotalAportes & 4 & 43,587.000 & 26,988.470 & 25,774 & 82,800 \\ 
+Genero & 8 & 1.375 & 0.518 & 1 & 2 \\ 
+Edad & 8 & 23.250 & 1.389 & 22 & 26 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+
+\vspace{1mm}
+{\footnotesize \textbf{Convenciones:} Genero) 1: Mujer, 2: Hombre; Edad) Edad del Aportante Analizado.}
+
+Basados en los resultados de la tabla anterior, observamos que al comparar la media de los montos aportados al Sistema de Seguridad Social por el total de la poblaci\'{o}n de ciudadanos  con relaci\'{o}n a la media de la poblaci\'{o}n cuya edad est\'{a} entre 22 a 26 años, identificamos una disminuci\'{o}n de 96.616 pesos colombianos al pasar de 140.206 pesos colombianos a 43.587 pesos colombianos, respectivamente, con lo cual, continua la tendencia donde aumenta el monto de los valores cotizados considerando la variable edad del aportante.
+
+Al analizar como es la distribucin\'{o}n de los datos en este rango, analizando la variable edad observamos que existen un mayor n\'{u}mero de  aportantes hacia los 22 años y que el n\'{u}mero de incidencias disminuye hacia los 26 años, como se observa en la siguiente gr\'{a}fica: 
+
+%\vspace{-10mm}
+\begin{figure}[H]
+	\centering
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/Aportantes1993-1} 
+
+\end{knitrout}
+	\caption{Población de aportantes del sistema de seguridad social con edad entre 22 y 26 años.}
+\end{figure}
+
+Tambi\'{e}n, analizamos el comportamiento de los montos aportados, al sistema observando una inclinaci\'{o}n de los datos hacia  la izquierda, observando una mayor incidencia alrededor de los  25.774 pesos colombianos, como se observa a continuaci\'{o}n.
+
+%\vspace{-10mm}
+\begin{figure}[H]
+	\centering
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/Aportantes1993monto-1} 
+
+\end{knitrout}
+	\caption{Montos de los aportes del sistema de seguridad social con edad entre 22 y 26 años.}
+\end{figure}
+
+Finalmente se presenta los montos aportados al sistema de seguridad social colombiano categorizado por la varible Edad. 
+
+\begin{itemize}
+	\item Promedio de montos de los aportes de los ciudadanos entre 22 a 26 años:
+[1] 43587
+
+	\item Promedio de montos de los aportes de los ciudadanos entre 27 a 50 años:
+[1] 100798.2
+
+	\item Promedio de montos de los aportes de los ciudadanos entre 51 a 71 años:
+[1] 169552
+
+	
+	\item Promedio de montos de los aportes de los ciudadanos entre 72 a 94 años:
+[1] 257584.2
+
+	
+	\item Promedio de montos de los aportes de los ciudadanos al Sistema de Seguridad Social presentado de forma consolidada:
+[1] 140206.5
+
+\end{itemize}
+
+\section{An\'{a}lisis Exploratorio}
+
+Revisado los resultados del trabajo realizado observamos que el valor m\'{a}ximo de los aportes realizados por la poblaci\'{o}n colombiana al sistema de seguridad social aumentan con relaci\'{o}n a la variable Edad, al pasar: 
+
+\begin{itemize}
+	
+	\item  de 82.800 pesos colombianos para el rango de aportantes de 22 a 26  años
+	
+	
+	\item  de 353.200 pesos colombianos para el rango de aportantes de 27 a 50  años
+	
+	\item  de 492.000 pesos colombianos para el rango de aportantes de 51 a 71  años
+	
+	\item  de 890.000 pesos colombianos para el rango de aportantes de 72 a 94  años.
+	
+\end{itemize}
+
+En consecuencia, se puede concluir que existe un n\'{u}mero de ciudadanos a los cuales sus aportes est\'{a}n por encima de la media de los montos de los aportes al sistema y aumentan con relaci\'{o}n a la variable edad. 
+
+\section{An\'{a}lisis Inferencial}
+
+Finalmente, fundamentados en los resultados obtenidos en fases previas, consideramos la pregunta donde se cuestiona s\'{i} los colombianos que m\'{a}s aportan tienen una edad mayor a 30 años, a la cual podemos mencionar:  
+
+
+\begin{itemize}
+	
+	\item  La media de los montos aportados al sistema de seguridad social colombiano con datos al 2015, categorizados por rangos, aumentan con relaci\'{o}n a la variable edad.
+	
+	\item  Los valores m\'{a}ximos de los montos aportados aumentan con relaci\'{o}n a la variable edad.
+	
+	\item   Al revisar, la gr\'{a}fica que consolida los montos de los aportes de los ciudadanos entre 22 y 26  años se observa una media de 43.587 pesos colombianos y un valor m\'{a}ximo de 82.800 pesos colombianos, respectivamente, con lo cual estos valores son menores a los aportes en otras categor\'{i}as analizados en este papel. 
+	
+\end{itemize}  
+
+En consecuencia se concluye que los montos aportados al sistema de seguridad social colombiano, por los ciudadanos con edad superior a 30 años es mayor a los montos aportados por la poblaci\'{o}n con una edad menor.
+
+Finalmente, mediante el an\'{a}lisis de la informaci\'{o}n mediante la t\'{e}cnica de miner\'{i}a de datos K-means, el cual permite visualizar el comportamiento de las variables Edad y Monto aportado en Conjunto, as\'{i}: 
+
+\begin{kframe}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): no se pudo encontrar la funci�n "{}geom.dotplot"{}}}\end{kframe}
+\includegraphics[width=\maxwidth]{figure/medias-1} 
+
+
+
+En el eje de las X, se observa la variable edad y en en el eje de la y, se representa la variable de los aportes al sistema, la cual sintetiza el an\'{a}lisis realizado.
+
+
+
+\includegraphics[width=\maxwidth]{figure/dendogran-1} 
+
+
+
+
+	
+
+
+
+%Resultados
+\input{01itemsDoc/resultados.tex}
+
+	%BIBLIOGRAFÍA
+	%ENTORNO {thebibliography}
+	%Permite al autor listar las referencias utilizadas y citarlas en algun punto del texto.
+
+	
+
+	 \begin{thebibliography}{1}
+	 	
+		\bibitem{biblio1}
+		Davies, Tim. (2011). What’s in the Linked Open Data Stack? Open Data Impacts. The research blog of Tim Davies. (Pág. 270) 	
+	 	
+		\bibitem{biblio2}
+		MinTIC. Ministerio de Tecnologías de la Información y las Comunicaciones de la República de Colombia. (2011). Entregable No. 2: Lineamientos para la implementación de datos abiertos en Colombia.  
+		
+		\bibitem{biblio3}
+		Opengovdata. Open Government Data. (2007). The Annotated 8 Principles of Open Government Data.
+	 	
+	 	\bibitem{biblio4}
+	 	Rodriguez,  L. A., Cueva, J. M., Tarazona, G. M., & Montenegro, C. E. (2013a). Open Data as a key factor for developing expert systems: a perspective from Spain. International Journal of Interactive Multimedia and Artificial Intelligence, 2(2), (Pág. 51-55.)
+	 	
+	 	\bibitem{biblio5}
+	 	Rodriguez, L. A., Tarazona, G. M., & Cueva, J. M. (2014). Open Data and Big Data: A Perspective from Colombia. En L. Uden et al. (Eds.),  Knowledge Management in Organizations. 9th International Conference, KMO 2014, Santiago, Chile, September 2-5, 2014, Proceedings, (Pág. 35-41).
+	 	
+	 	\bibitem{biblio6}
+	 	W3C. World Wide Web Consortium. (2009). Publishing Open Government Data. 
+	 	
+		\bibitem{biblio7}
+	 	S. Sumathi., S. Esakkirajan., (2007). Data Mining and Data Warehousing. (Pág. 1-30)
+	 	
+	 	\bibitem{biblio8}
+	 	M. ferri, J. Hernández.; C. Ramírez, Introducción a la Minería de Datos. Prentice Hall. España, 2004
+	 	
+	 	\bibitem{biblio9}
+	 	Public.Resource.Org. (2007). Open Government Data Principles. URL:  
+	 	
+	 \end{thebibliography}
+	
+\end{document}

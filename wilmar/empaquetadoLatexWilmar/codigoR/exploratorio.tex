@@ -1,0 +1,206 @@
+\section{Solución a preguntas}
+El análisis dinámico de datos en la investigación reproducible debe permitir, reproducir el experimento propuesto para nuestro caso obtener el resultado de las preguntas de investigación de manera dinámica por tal razón de cambiar un dato en el dataset se va a ver reflejado en las respuestas del documento esto generalmente ocurrira mes a mes.
+\\
+\\
+En este momento hay que tener varias consideraciones, se requiere hacer referencia a los datos anteponiendo la letra d ya que así esta construido el json que entrega la pagina de datos abiertos colombianos como ejemplo "json_data1\$d\$areadespejada[1]" esto mostraria el valor del area despejada para la primera fila del conjunto de datos notese que aparte de la variable donde se cargaron los datos se requiere hacer referencia a \$d,algunos de los datos que se van a tratar del datset son numéricos estos se deberán convertir a tal formato para poderlos tratar ya que cuando se lee dicho dataset se leen como texto para que R pueda trabajar con dichos datos se requiere la siguiente instrucción "json_data1\$d\$areadespejada <- as.numeric(json_data1\$d\$areadespejada)" lo que realiza esta instrucción es decirle que todos los datos de la columna area despejada los debe tratar como numéricos. 
+
+
+
+Respuesta dinámica de las preguntas planteadas:
+%\vspace{1mm}
+\\
+\\
+En el siguiente apartado se muestran los datos estadisticos del área despejada así como el total de artefactos destruido.
+\begin{kframe}
+\begin{alltt}
+\hlstd{dfull} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{totalartefactos}\hlstd{=json_data1}\hlopt{$}\hlstd{d}\hlopt{$}\hlstd{totalartefactosdestruidos,}\hlkwc{totalarea}\hlstd{=json_data1}\hlopt{$}\hlstd{d}\hlopt{$}\hlstd{areadespejada)}
+\hlkwd{stargazer}\hlstd{(dfull,}\hlkwc{type}\hlstd{=}\hlstr{"latex"}\hlstd{,}\hlkwc{title}\hlstd{=}\hlstr{"Total de Artefactos y Área Despejada"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: vie, jun 03, 2016 - 06:32:28 p.m.
+\begin{table}[!htbp] \centering 
+  \caption{Total de Artefactos y Área Despejada} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\ 
+\hline \\[-1.8ex] 
+totalartefactos & 530 & 9.872 & 44.424 & 0 & 476 \\ 
+totalarea & 530 & 4,868.119 & 6,899.598 & 0 & 54,370 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+
+
+
+\begin{itemize}
+	\item ¿Cuál es la Media de área despejada para los los años  2014, 2015, 2016?
+\\
+	Para poder manejar estos datos de forma dinámica lo que se debe realizar es una selección especifica de datos para este caso se realiza de la siguiente manera. vamos a verlo con el año 2016 datos2016<-subset(json_data1\$d,json_data1\$d\$ano==2016) de esta manera se seleccionan los datos que cumplan con el año y nuevamente se aplica los datos estadísticos con los siguientes resultados  
+
+\begin{kframe}
+\begin{alltt}
+\hlstd{dfull} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{totalartefactos}\hlstd{=datos2016}\hlopt{$}\hlstd{totalartefactosdestruidos,}\hlkwc{totalarea}\hlstd{=datos2016}\hlopt{$}\hlstd{areadespejada)}
+\hlkwd{stargazer}\hlstd{(dfull,}\hlkwc{type}\hlstd{=}\hlstr{"latex"}\hlstd{,}\hlkwc{title}\hlstd{=}\hlstr{"Total de Artefactos y Área Despejada para el año 2016"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: vie, jun 03, 2016 - 06:32:28 p.m.
+\begin{table}[!htbp] \centering 
+  \caption{Total de Artefactos y Área Despejada para el año 2016} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\ 
+\hline \\[-1.8ex] 
+totalartefactos & 10 & 0.300 & 0.675 & 0 & 2 \\ 
+totalarea & 10 & 978.600 & 1,359.855 & 0 & 4,179 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+
+	
+\begin{kframe}
+\begin{alltt}
+\hlstd{dfull} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{totalartefactos}\hlstd{=datos2015}\hlopt{$}\hlstd{totalartefactosdestruidos,}\hlkwc{totalarea}\hlstd{=datos2015}\hlopt{$}\hlstd{areadespejada)}
+\hlkwd{stargazer}\hlstd{(dfull,}\hlkwc{type}\hlstd{=}\hlstr{"latex"}\hlstd{,}\hlkwc{title}\hlstd{=}\hlstr{"Total de Artefactos y Área Despejada para el año 2015"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: vie, jun 03, 2016 - 06:32:28 p.m.
+\begin{table}[!htbp] \centering 
+  \caption{Total de Artefactos y Área Despejada para el año 2015} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\ 
+\hline \\[-1.8ex] 
+totalartefactos & 97 & 2.330 & 5.554 & 0 & 37 \\ 
+totalarea & 97 & 3,970.443 & 5,994.439 & 0 & 28,150 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+
+
+\begin{kframe}
+\begin{alltt}
+\hlstd{dfull} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{totalartefactos}\hlstd{=datos2014}\hlopt{$}\hlstd{totalartefactosdestruidos,}\hlkwc{totalarea}\hlstd{=datos2014}\hlopt{$}\hlstd{areadespejada)}
+\hlkwd{stargazer}\hlstd{(dfull,}\hlkwc{type}\hlstd{=}\hlstr{"latex"}\hlstd{,}\hlkwc{title}\hlstd{=}\hlstr{"Total de Artefactos y Área Despejada para el año 2014"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: vie, jun 03, 2016 - 06:32:28 p.m.
+\begin{table}[!htbp] \centering 
+  \caption{Total de Artefactos y Área Despejada para el año 2014} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\ 
+\hline \\[-1.8ex] 
+totalartefactos & 98 & 2.306 & 4.368 & 0 & 20 \\ 
+totalarea & 98 & 5,612.071 & 9,010.254 & 0 & 43,194 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+
+
+		Para solucionar las preguntas que siguen a continuación se usaron los subconjuntos de datos para poder obtener los resultados requeridos de forma dinámica asi como algunas funciones propias de R
+
+	
+	\item ¿Qué departamentos tiene la mayor y menor área despejada de Minas en el año 2016?
+	
+Los departamentos que tiene la mayor área despejada para 2016 son:
+
+
+\begin{kframe}
+\begin{alltt}
+        \hlstd{datos2016max}\hlopt{$}\hlstd{departamento}
+\end{alltt}
+\end{kframe}[1] "ANTIOQUIA"
+
+Los departamentos que tiene la menor área despejada para 2016 son:
+
+
+\begin{kframe}
+\begin{alltt}
+\hlstd{datos2016min}\hlopt{$}\hlstd{departamento}
+\end{alltt}
+\end{kframe}[1] "ANTIOQUIA" "ANTIOQUIA" "SANTANDER" "SANTANDER" "TOLIMA"   
+
+
+
+
+	\item ¿Qué departamentos tiene la mayor y menor área despejada de Minas en el año 2015?
+
+	
+	Los departamentos que tiene la mayor área despejada para 2015 son:
+	
+	
+\begin{kframe}
+\begin{alltt}
+\hlstd{datos2015max}\hlopt{$}\hlstd{departamento}
+\end{alltt}
+\end{kframe}[1] "ANTIOQUIA"
+
+	Los departamentos que tiene la menor área despejada para 2015 son:
+	
+	
+\begin{kframe}
+\begin{alltt}
+\hlstd{datos2015min}\hlopt{$}\hlstd{departamento}
+\end{alltt}
+\end{kframe} [1] "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA"
+ [6] "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA"
+[11] "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA"
+[16] "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA"
+[21] "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA"
+[26] "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "BOLIVAR"  
+[31] "BOLIVAR"   "CALDAS"    "SANTANDER" "SANTANDER" "SANTANDER"
+[36] "SANTANDER" "SANTANDER" "SANTANDER"
+
+
+
+
+	\item ¿Qué departamentos tiene la mayor y menor área despejada de Minas en el año 2014?
+
+	Los departamentos que tiene la mayor área despejada para 2014 son:
+	
+	
+\begin{kframe}
+\begin{alltt}
+\hlstd{datos2014max}\hlopt{$}\hlstd{departamento}
+\end{alltt}
+\end{kframe}[1] "BOLIVAR"
+
+	Los departamentos que tiene la menor área despejada para 2014 son:
+	
+	
+\begin{kframe}
+\begin{alltt}
+\hlstd{datos2014min}\hlopt{$}\hlstd{departamento}
+\end{alltt}
+\end{kframe} [1] "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA"
+ [6] "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA"
+[11] "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA"
+[16] "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA"
+[21] "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA"
+[26] "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA" "ANTIOQUIA"
+[31] "BOLIVAR"   "BOLIVAR"   "BOLIVAR"   "CALDAS"    "CALDAS"   
+[36] "META"      "SANTANDER" "SANTANDER" "SANTANDER" "SANTANDER"
+[41] "SANTANDER" "SANTANDER"
+
+	
+
+
+
+	\item ¿Determinar si el acuerdo de paz ha permitido aumentar el área media despejada ?
+	en conclusión no se ha visto aumento de desminado en colombia
+	\item ¿Determinar si el acuerdo de paz ha permitido aumentar el área media despejada ?
+	No
+\end{itemize}
+

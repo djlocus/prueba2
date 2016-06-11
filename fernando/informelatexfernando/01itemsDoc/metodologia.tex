@@ -1,0 +1,79 @@
+%SECCIÓN 3. METODOLOGIA
+\section{METODOLOGÍA}
+
+ Para el desarrollo de este documento se utilizará como marco de referencia la metodología para minería de datos y fundamentos para análisis de datos [1].
+ 
+  \subsection{Comprensión del negocio}
+  
+   \begin{itemize}
+   	
+   	\item \textbf{Identificar un problema}: El Gobierno Colombiano ha implementado un sistema de Seguridad Social el cual está compuesto por el régimen contributivo y subsidiado. En cuando al  régimen contributivo, se deben afiliar las personas que tienen una vinculación laboral, es decir, con capacidad de pago como los trabajadores formales e independientes, los pensionados y sus familias.  Debido al crecimiento poblacional Colombiano en los últimos años [2] es importante conocer el comportamiento las contribuciones a este sistema, y por consiguiente se hace necesario poder analizar el monto de los aportes al sistema de seguridad social según la edad del cotizante. Para ello, utilizaremos los datos abiertos publicados por el DANE.\\ 
+   	
+   \end{itemize} 
+   
+    \subsection{Preguntas de investigación}
+    La pregunta de investigación que se desarrollará en este artículo estará enmarcada en los siguientes ámbitos:
+    \begin{itemize}
+    	\item Descriptivas 
+    	\item Exploratorias
+    	\item Inferenciales
+    \end{itemize}
+    
+    Pregunta de Investigación: 
+    \begin{itemize}
+    	\item ¿El monto de los aportes de los afiliados al sistema de seguridad social colombiano aumenta con relación a la edad del cotizante?
+    \end{itemize}
+  
+  \subsection{Comprensión de los Datos}
+ 
+   \begin{itemize}
+   \item \textbf{Recopilación inicial de datos}: Los datos obtenidos fueron exportados desde la página del Departamento Nacional de Estadísticas [2],  con el objetivo de analizar el monto de los aportes al sistema de seguridad social considerando la variable edad del cotizante.\\
+   
+   \item \textbf{Descripción de los datos: Variables del DataSet}: El conjunto de datos fueron descargados de la página del DANE en formato csv, formato separado por comas,, el contenía una población total de 10.000 registros.  el conjunto de datos está compuesto de los siguientes campos: 
+   \\ 	 
+   Género. Hombre - Mujer\\
+   Año de Nacimiento\\
+   Años cumplidos\\ 
+   Valor mensual de la cotización a salud?\\
+     
+\end{itemize} 
+  	
+	
+  \subsection{Preparación de los Datos}
+  Siguiendo la metodología para minería de datos, se adelantarán las siguientes actividades 
+  \begin{itemize}
+  	\item Selección de los datos
+  	\item Limpieza de datos
+	\item Construcción de datos
+    \item Integración de datos
+	\item Formateo de datos
+   \end{itemize}  
+   Dado que la política de datos abiertos exigen que la disponibilidad de los datos al público, estén ya estructurados con antelación.  Dichas actividades no se llevan a cabo dentro de este artículo.
+
+  \subsection{Análisis exploratorio}
+Durante el análisis de la información de DANE se utilizan los siguientes aspectos para el desarrollo de este artículo:
+
+  \begin{itemize}
+  
+   \item Frecuencia relativa    
+   \item Medidas de tendencia central[4] 
+	   \begin{itemize}
+		 	\item Media. 
+		 	\item Moda. 
+		 	\item Mediana.
+		 \end{itemize}
+ %15\
+ 
+  \item Medidas de Dispersión[4] 
+  \begin{itemize}
+ 
+  \item Varianza.  
+ 
+ 
+     \item Desviaci\'on est\'andar .
+\end{itemize} 
+
+\end{itemize}  
+
+
+

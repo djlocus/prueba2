@@ -1,0 +1,49 @@
+%SECCIÓN 3. METODOLOGIA
+\section{METODOLOGIA}
+
+ Para el desarrollo de este documento se plantean los siguientes hitos [1].
+ 
+  \subsection{Obtención de datos de Catálogo abierto para programación literaria y Variables del Catálogo}
+ 
+  \begin{itemize}
+   \item \textbf{Como Acceder a datos Abiertos}: Lo primero que se realizo fue  investigar como poder obtener los datos para esto se ingreso a la sección de desarrolladores de la pagina de datos abiertos de Colombia y alli se encuentra la información detallada que muestra el uso de dichos datos,¿Qué son datos abiertos?,  ¿Que caracteristicas tienen los datos?, se puede ingresar al siguiente link 
+	\href{http://www.datos.gov.co/frm/Acerca/frmAcercaDe.aspx}{\textcolor{blue}{\underline{Datos Abiertos Colombia}}}
+   , existe una guía de ejemplo don se muestra como se puede consultar de forma sencilla los datos en el siguiente link   
+   \href{http://ogdidata.blob.core.windows.net/documentos/articles-9407_GuiaDesarrolladores.pdf}{\textcolor{blue}{\underline{Guia Desarrolladores}}}
+    .\\
+   
+       \item \textbf{Como integrar los datos que están publicados con la programación Literaria}:Para poder hacer un análisis reproducible y que adicionalmente permita cambiar el conjunto de datos y observar el nuevo resultado se requiere poder leer los datos del catalogo en linea, luego procesarlos para esto y tal como se muestra en la guía para desarrolladores se puede consultar los datos usando la cadena del catalogo y añadiendo el formato requerido, existen dos opciones una es un formato json y la otra es un formato atom.Para nuestro analisis se utilizo el formato Json el cual implica colocar al final del catalogo el siguiente texto "?\$format=json" \\ 
+       
+   
+   \item \textbf{Como usarlos con knitr }:Para poder integrar dichos datos con programación literaria se requiere usar un paquete que permita leer los datos en formato JSON y poderlos tratar con los chunks de código  se uso el siguiente paquete  "jsonlite" el cual se instala con el comando "install.packages('jsonlite', dependencies = TRUE)" luego de esto se observaron problemas al cargar directo desde la web los datos por que le sobra un identificador por este motivo se necesito descargarlos en una carpeta local sin embargo la linea usada para la carga de estos datos es la siguiente 
+   
+       \begin{itemize}
+       	\item library(jsonlite)
+       	\item json\_file \textless- "http://servicedatosabiertoscolombia\\
+       	.cloudapp.net/v1/Departamento\_Administrativo\\
+       	\_de\_la\_Presidencia/eventosminasantipersonal\\
+       	?\$format=json"
+       	\item fromJSON(json\_file)
+      	\item json\_data1\textless-fromJSON(json\_file,flatten = TRUE)
+      \end{itemize}
+   Finalmente se determino que se requeria hacer referencia a los datos anteponiendo una d que viene en el formato que entrega la pagina de Datos Abiertos de Colombia y se podrían leer en linea
+   \item \textbf{Datos e identificación de variables}: En particular el set de datos que se tomo es el que esta relacionado con el Desminado Humanitario en Colombia en el hipervínculo se puede acceder en el siguiente link
+\href{http://servicedatosabiertoscolombia.cloudapp.net/v1/Departamento_Administrativo_de_la_Presidencia/situaciondesminadohumanitario}{\textcolor{blue}{\underline{Datos Desminado Humanitario Colombia}}}
+de igual forma se consulto la metadata de dicho catalogo la cual puede ser vista en el siguiente enlace
+
+\href{http://www.datos.gov.co/frm/catalogo/frmCatalogo.aspx?dsId=75158}{\textcolor{blue}{\underline{Metadata Datos Desminado Humanitario Colombia}}} y luego dando click en la opción Ficha Técnica de la pagina allí se muestra que 
+
+
+
+   \item \textbf{Objetivos}: Los objetivos están enfocados a tener datos que puedan ser obtenidos de forma dinamica y que muestren la situación actual de Desminnado Humanitario ya que estos datos se van alimentando mes a mes por el gobierno Colombiano tal como se indica en la ficha técnica y se podría simplemente volver a compilar  el análisis obteniendo los resultados más recientes para el momento de realizarlo. 
+    \begin{itemize}
+     \item Identificar cual departamento ha sido en el que se ha podido despejar mas área minada
+     \item Saber la media de área minada despejada en Colombia con los datos proporcionados.
+     \item Obtener por año cual de los departamentos ha sido el que mas área se ha podido despejar
+     \item Determinar si en los meses corridos del año 2016 con respecto al anterior existe aumento de área despejada con el posible acuerdo de Paz 
+
+    \end{itemize}
+  \end{itemize}
+
+
+

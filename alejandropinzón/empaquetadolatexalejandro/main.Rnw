@@ -1,0 +1,75 @@
+	%Tipo de Documento [Conferencia]
+\documentclass[conference]{IEEEtran}
+% Configuracion github http://www.cristalab.com/tutoriales/introduccion-a-github-en-linux-ubuntu-c106086l/ 
+%BIBLIOTECAS% Este paquete se utiliza para generar texto o graficas de relleno.
+%\usepackage{blindtext, graphicx}
+%Biblioteca para graficas
+\usepackage{graphicx}
+%Biblioteca para lectura de caracteres ortográficos (tildes..etc. ) 
+\usepackage[utf8]{inputenc} %tabla de caracteres para SO linux
+%\usepackage[latin1]{inputenc} %tabla de caracteres para SO windows 
+\usepackage[T1]{fontenc}
+%Biblioteca para enumeración de imagenes
+\usepackage{float}
+%Biblioteca para graficos vectorizados.svg 
+\usepackage{svg}
+\usepackage{enumerate}
+%Biblioteca para enumerar figuras tablas.. etc en español 
+\usepackage[spanish, es-tabla]{babel}
+%Idioma español
+\usepackage[spanish]{babel}
+%\usepackage[spanish,USenglish]{babel}
+
+%INICIO DEL DOCUMENTO
+\begin{document}	
+	
+	% TITULO DEL PAPER
+	\title{Incidencia del estrato socio económico en el rendimiento académico de los estudiantes de la Universidad de los Llanos}
+	
+	% NOMBRE DE LOS AUTORES
+	\author{
+		\IEEEauthorblockN{Alejandro Pinzón Roberto}
+		\IEEEauthorblockA{Ingeniero de Sistemas\\ 
+			Universidad de los LLanos\\
+			Bogotá D.C., Colombia\\
+			Email: alejorobert@gmail.com}
+	}
+	%TITULO
+	\maketitle
+	
+	%abstract del documento
+	\input{itemsDoc/abstract.tex}
+	
+	%Iniciar Palabras Clave Formato IEEE
+	\begin{IEEEkeywords}
+		Estrato socieconomico, Rendimiento académico, Estudiantes ingeniería, Facultad Ingeniería 
+	\end{IEEEkeywords}
+	
+	%Introduccion 
+	\input{itemsDoc/introduccion.tex}
+	
+	%Metodologia
+	%\input{itemsDoc/metodologia.tex}
+	<<child='codigoR/metodologia.Rnw', echo=FALSE, results='hide'>>=  
+	@
+	
+	%Introduccion 
+	\input{itemsDoc/conclusiones.tex}
+		
+	\newpage
+	\begin{thebibliography}{1}
+		
+		\bibitem{biblio1}
+		Alexander Borbón A., Walter Mora F. LATEX 2014, Instituto Tecnológico de Costa Rica.  
+		\bibitem{biblio2}
+		Sabina, Carlos: El Proceso de Investigación, editorial Panamo, Caracas 1992.
+		\bibitem{biblio3}
+		George C. Calvos. Probabilidad y estadística aplicaciones y métodos, Virginia 1998 
+		\bibitem{biblio4}
+		G. C. Canavos, Probabilidad y estadística: Aplicaciones y métodos, Virginia Commonwealth University, Published McGRAW HILL, 1988.
+		\bibitem{biblio5}
+		revista Orinoquia de la Universidad de los Llanos en su Volumen 11 - Nº 1 - Año 2007 fue publicado un estudio sobre la deserción en entre los años de 1998 y 2004
+		
+	\end{thebibliography}
+	
+\end{document}

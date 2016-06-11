@@ -1,0 +1,109 @@
+%Tipo de Documento [Conferencia]
+
+\documentclass[conference]{IEEEtran}
+
+%BIBLIOTECAS
+
+% Este paquete se utiliza para generar texto o graficas de relleno.
+%\usepackage{blindtext, graphicx}
+%Biblioteca para graficas
+\usepackage{graphicx}
+%Biblioteca para lectura de caracteres ortográficos (tildes..etc. ) 
+\usepackage[utf8]{inputenc}
+%Biblioteca para enumeración de imagenes
+\usepackage{float}
+%Biblioteca para graficos vectrizados.svg 
+\usepackage{svg}
+\usepackage{enumerate}
+%Biblioteca para enumerar figuras tablas.. etc en español 
+\usepackage[spanish, es-tabla]{babel}
+\usepackage[spanish]{babel}
+%\usepackage[spanish,USenglish]{babel}
+
+%INICIO DEL DOCUMENTO
+\begin{document}
+	
+	
+	% TITULO DEL PAPER
+\title{Análisis de los Aportes al Sistema de Seguridad Social Colombiano con datos del DANE para el a\~no 2015}
+
+% NOMBRE DE LOS AUTORES
+\author{
+	\IEEEauthorblockN{Fernando Buitrago }
+		
+	\IEEEauthorblockA{Universidad Distrital Francisco José de Caldas\\
+		Bogotá D.C., Colombia\\
+		Email: Fernadobuitragoa@gmail.com  }
+	%\and
+}
+%TITULO
+\maketitle
+
+%abstract del documento
+\input{01itemsDoc/abstract.tex}
+
+%Iniciar Palabras Clave Formato IEEE
+\begin{IEEEkeywords}
+	Linked Data, Data Mining, Dataset, Open Data.
+\end{IEEEkeywords}
+
+%Introduccion 
+\input{01itemsDoc/introduccion.tex}
+
+
+%Metodologia
+\input{01itemsDoc/metodologia.tex}
+
+%Preguntas de investigacion
+\input{01itemsDoc/DefinicionProblema.tex}
+
+
+	
+	% Analisis Datos DANE
+	<<child='03ArchivosSweave/AnalisisDatosDANE.Rnw', echo=FALSE, results='hide'>>=  
+	@
+	
+
+
+
+%Resultados
+\input{01itemsDoc/resultados.tex}
+
+	%BIBLIOGRAFÍA
+	%ENTORNO {thebibliography}
+	%Permite al autor listar las referencias utilizadas y citarlas en algun punto del texto.
+
+	
+
+	 \begin{thebibliography}{1}
+	 	
+		\bibitem{biblio1}
+		Davies, Tim. (2011). What’s in the Linked Open Data Stack? Open Data Impacts. The research blog of Tim Davies. (Pág. 270) 	
+	 	
+		\bibitem{biblio2}
+		MinTIC. Ministerio de Tecnologías de la Información y las Comunicaciones de la República de Colombia. (2011). Entregable No. 2: Lineamientos para la implementación de datos abiertos en Colombia.  
+		
+		\bibitem{biblio3}
+		Opengovdata. Open Government Data. (2007). The Annotated 8 Principles of Open Government Data.
+	 	
+	 	\bibitem{biblio4}
+	 	Rodriguez,  L. A., Cueva, J. M., Tarazona, G. M., & Montenegro, C. E. (2013a). Open Data as a key factor for developing expert systems: a perspective from Spain. International Journal of Interactive Multimedia and Artificial Intelligence, 2(2), (Pág. 51-55.)
+	 	
+	 	\bibitem{biblio5}
+	 	Rodriguez, L. A., Tarazona, G. M., & Cueva, J. M. (2014). Open Data and Big Data: A Perspective from Colombia. En L. Uden et al. (Eds.),  Knowledge Management in Organizations. 9th International Conference, KMO 2014, Santiago, Chile, September 2-5, 2014, Proceedings, (Pág. 35-41).
+	 	
+	 	\bibitem{biblio6}
+	 	W3C. World Wide Web Consortium. (2009). Publishing Open Government Data. 
+	 	
+		\bibitem{biblio7}
+	 	S. Sumathi., S. Esakkirajan., (2007). Data Mining and Data Warehousing. (Pág. 1-30)
+	 	
+	 	\bibitem{biblio8}
+	 	M. ferri, J. Hernández.; C. Ramírez, Introducción a la Minería de Datos. Prentice Hall. España, 2004
+	 	
+	 	\bibitem{biblio9}
+	 	Public.Resource.Org. (2007). Open Government Data Principles. URL:  
+	 	
+	 \end{thebibliography}
+	
+\end{document}

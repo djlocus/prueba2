@@ -1,0 +1,47 @@
+\section{prueba}
+
+
+
+\subsection{Análisis estadísticos}
+%\vspace{1mm}
+\begin{kframe}
+\begin{alltt}
+\hlstd{dfull} \hlkwb{<-} \hlkwd{data.frame}\hlstd{(}\hlkwc{Promedio}\hlstd{=datosep}\hlopt{$}\hlstd{promedio,} \hlkwc{Estrato}\hlstd{=datosep}\hlopt{$}\hlstd{estrato)}
+\hlkwd{stargazer}\hlstd{(dfull,} \hlkwc{type}\hlstd{=}\hlstr{"latex"}\hlstd{,} \hlkwc{title}\hlstd{=}\hlstr{"Total"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: sáb, may 21, 2016 - 06:45:12
+\begin{table}[!htbp] \centering 
+  \caption{Total} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Max} \\ 
+\hline \\[-1.8ex] 
+Promedio & 595 & 3.531 & 0.356 & 1.882 & 4.538 \\ 
+Estrato & 594 & 2.357 & 0.719 & 1 & 4 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+\begin{kframe}\begin{alltt}
+\hlkwd{summary}\hlstd{(datosep)}
+\end{alltt}
+\end{kframe}    estrato         promedio    
+ Min.   :1.000   Min.   :1.882  
+ 1st Qu.:2.000   1st Qu.:3.316  
+ Median :2.000   Median :3.519  
+ Mean   :2.357   Mean   :3.531  
+ 3rd Qu.:3.000   3rd Qu.:3.765  
+ Max.   :4.000   Max.   :4.538  
+ NA's   :1                      
+
+
+\begin{kframe}
+\begin{alltt}
+\hlkwd{with}\hlstd{(datosep,} \hlkwd{Hist}\hlstd{(promedio,} \hlkwc{scale}\hlstd{=}\hlstr{"frequency"}\hlstd{,} \hlkwc{breaks}\hlstd{=}\hlstr{"Sturges"}\hlstd{,} \hlkwc{col}\hlstd{=}\hlstr{"darkgray"}\hlstd{,} \hlkwc{main}\hlstd{=}\hlstr{"Histograma de frecuencias de clases"}\hlstd{))}
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): no se pudo encontrar la función "{}Hist"{}}}\end{kframe}
